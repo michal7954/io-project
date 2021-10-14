@@ -1,0 +1,21 @@
+Procesy:
+-zarządzanie pokojami (dodawanie, usuwanie, modyfikowanie)
+-rezerwacja (wyszukanie dostępnych, sprawdzenie tożsamości)
+-anulowanie rezerwacji (opłata karna)
+-opłata za pokój (odroczenie płatności)
+-gość: posiłki
+
+Dodatkowe usługi:
+-konserwator
+-sprzątaczka
+-miejsce parkingowe
+-posiłki
+
+
+
+Aktorzy:
+-użytkownik (potencjalny klient)
+-kierownik hotelu (administrator systemu)
+-gość hotelu
+-recepcjonista
+-obsługa
