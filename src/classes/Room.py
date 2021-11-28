@@ -1,6 +1,7 @@
 from helpers.dateIntervalsDivergent import dateIntervalsDivergent
 import storage
 
+
 class Room():
     # params = [number, size, standard, costPerDay]
     def __init__(self, key, params):
@@ -12,7 +13,6 @@ class Room():
         self.size = int(params[1])
         # self.standard = str(params[2])
         # self.costPerDay = float(params[3])
-        
 
     def __str__(self):
         return '#' + str(self.key) + ' Room number ' + str(self.number) + ', size ' + str(self.size)

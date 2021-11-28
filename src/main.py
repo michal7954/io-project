@@ -17,9 +17,9 @@ def main():
             line = input()
             params = line.split()
 
-            if len(params)==0:
+            if len(params) == 0:
                 continue
-            
+
             store = params[0]
             if store == 'rooms':
                 store = storage.rooms
@@ -29,13 +29,16 @@ def main():
             #     store = storage.services
 
             store.call(params)
-            
+
             # todo zaawansowana weryfikacja i obsługa błędów
             # try:
             #     store.call(params)
             # except:
             #     print("Problem occurred")
 
+    # todo runtests()
+
     listener()
+
 
 main()
