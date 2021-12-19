@@ -20,10 +20,10 @@ class Reservation():
 
         room = storage.rooms.get(self.roomKey)
         if not room.checkAvailability(self.start, self.end):
-            print('Room anavailable')
+            print('Pokój niedostępny w tym terminie')
             self.objectStatus = 'forbidden'
         else:
             room.addReservation(self.key)
 
     def __str__(self):
-        return '#' + str(self.key) + ' RoomKey ' + str(self.roomKey) + ', date ' + str(self.start) + '-' + str(self.end)
+        return '#' + str(self.key) + ' pokój #' + str(self.roomKey) + ', ' + str(self.start) + '-' + str(self.end)
