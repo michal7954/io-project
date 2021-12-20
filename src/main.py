@@ -4,35 +4,43 @@ from classes.Room import Room
 from classes.Reservation import Reservation
 
 
-def main():
-    global storage
-
+def init():
     storage.rooms = Store(Room)
     storage.reservations = Store(Reservation)
     # storage.services = Store(Services)
 
+
+def main():
+    from definitions.Operations import Operations
+
     def listener():
 
         while True:
-            line = input()
-            params = line.split()
 
-            if len(params) == 0:
+            print()
+            for operation in Operations:
+                operation.menuOption()
+
+            operation = input()
+
+            if not hasattr(Operations, operation):
+                print('Niepoprawna nazwa operacji')
                 continue
 
-            store = params[0]
-            if store == 'rooms':
-                store = storage.rooms
-            elif store == 'reservations':
-                store = storage.reservations
-            # elif store == 'services':
-            #     store = storage.services
+            operation = Operations[operation]
 
-            store.call(params)
+            n = len(operation.params)
+            params = [None for _ in range(n)]
+
+            for i in range(n):
+                param = operation.params[i]
+                params[i] = input(param.text())
+
+            operation.run(params)
 
             # todo zaawansowana weryfikacja i obsługa błędów
             # try:
-            #     store.call(params)
+            #     operation.call(params)
             # except:
             #     print("Problem occurred")
 
@@ -41,4 +49,5 @@ def main():
     listener()
 
 
+init()
 main()
