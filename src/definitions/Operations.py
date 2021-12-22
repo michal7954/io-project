@@ -16,13 +16,13 @@ class Operations(Enum):
     addRoom = (
         "addRoom",
         "Dodaj pokój",
-        [Params.roomNumber, Params.roomSize],
+        [Params.roomNumber, Params.roomSize, Params.costPerDay],
         storage.rooms.add
     )
     modifyRoom = (
         "modifyRoom",
         "Zmodyfikuj pokój",
-        [Params.roomID, Params.roomNumber, Params.roomSize],
+        [Params.roomID, Params.roomNumber, Params.roomSize, Params.costPerDay],
         storage.rooms.modify
     )
     removeRoom = (
