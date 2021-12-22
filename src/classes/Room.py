@@ -4,7 +4,7 @@ import storage
 
 
 class Room():
-    # params = [number, size, standard, costPerDay]
+    # params = [number, size, costPerDay, standard]
     def __init__(self, key, params):
         self.key = key
         # lista kluczy rezerwacji przypisanych do tego pokoju
@@ -13,11 +13,11 @@ class Room():
 
         self.number = int(params[0])
         self.size = int(params[1])
-        # self.standard = str(params[2])
-        # self.costPerDay = float(params[3])
+        self.costPerDay = float(params[2])
+        # self.standard = str(params[3])
 
     def __str__(self):
-        return '#' + str(self.key) + ' Room number ' + str(self.number) + ', size ' + str(self.size)
+        return '#' + str(self.key) + ' Pokój numer ' + str(self.number) + ', miejsc ' + str(self.size) + ', koszt ' + str(self.costPerDay)
 
     # czy pokój jest dostępny w zadanym przedziale czasowym
     def checkAvailability(self, start: Date, end: Date):

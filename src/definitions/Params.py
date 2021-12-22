@@ -17,6 +17,10 @@ class Params(Enum):
         "roomSize",
         "Podaj rozmiar pokoju",
     )
+    costPerDay = (
+        "costPerDay",
+        "Podaj cenę za jedną noc wynajęcia pokoju (np. 49.99)"
+    )
     roomID = (
         "roomID",
         "Podaj #ID pokoju"
