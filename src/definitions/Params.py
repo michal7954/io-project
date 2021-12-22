@@ -2,10 +2,13 @@ from enum import Enum
 
 
 class Params(Enum):
+    # definicje wszystkich możliwych parametrów podawanych przez użytkownika w aplikacji
+
     # przykładowy parametr = (
     #     identyfikator parametru: "przykładowy parametr",
     #     opis parametru
     # )
+
     roomNumber = (
         "roomNumber",
         "Podaj numer pokoju",
@@ -36,5 +39,6 @@ class Params(Enum):
     def __init__(self, _, description):
         self.description = description
 
+    # wyświetlenie tekstowej zachęty
     def text(self):
         return self.description + ": "

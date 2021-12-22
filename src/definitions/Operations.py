@@ -4,12 +4,15 @@ import storage
 
 
 class Operations(Enum):
+    # definicje wszystkich dostępnych operacji wykonywanych przez użytkownika w aplikacji
+
     # przykładowa operacja = (
     #     identyfikator operacji: "przykładowa operacja",
     #     "opis operacji",
     #     lista parametrów: [parametr1, parametr2],
     #     akcja z klasy Store, która ma zostać wywołana
     # )
+
     addRoom = (
         "addRoom",
         "Dodaj pokój",
@@ -59,5 +62,6 @@ class Operations(Enum):
         self.run = run
         # self.actors = actors
 
+    # wyświetlenie pozycji w menu
     def menuOption(self):
         print(self.value + ': ' + self.description)

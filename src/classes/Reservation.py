@@ -6,6 +6,7 @@ class Reservation():
     # params = [roomKey, startString, endString]
     def __init__(self, key, params):
         self.key = key
+        # klucz pokoju przypisanego do tej rezerwacji
         self.roomKey = int(params[0])
         self.objectStatus = 'ok'
 
@@ -18,6 +19,7 @@ class Reservation():
         # self.pesel = str(params[5])
         # self.phone = str(params[6])
 
+        # weryfikacja dostępności pokoju
         room = storage.rooms.get(self.roomKey)
         if not room.checkAvailability(self.start, self.end):
             print('Pokój niedostępny w tym terminie')
