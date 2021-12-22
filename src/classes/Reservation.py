@@ -28,4 +28,7 @@ class Reservation():
             room.addReservation(self.key)
 
     def __str__(self):
-        return '#' + str(self.key) + ' pokój #' + str(self.roomKey) + ', ' + str(self.start) + '-' + str(self.end)
+        return '#' + str(self.key) + ' pokój #' + str(self.roomKey) + ', ' + str(self.start) + '-' + str(self.end) + ', status ' + str(self.accomodationStatus)
+
+    def cancelReservation(self):
+        self.accomodationStatus = 'cancelled'

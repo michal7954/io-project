@@ -9,6 +9,10 @@ class Params(Enum):
     #     opis parametru
     # )
 
+    roomID = (
+        "roomID",
+        "Podaj #ID pokoju"
+    )
     roomNumber = (
         "roomNumber",
         "Podaj numer pokoju",
@@ -21,11 +25,11 @@ class Params(Enum):
         "costPerDay",
         "Podaj cenę za jedną noc wynajęcia pokoju (np. 49.99)"
     )
-    roomID = (
-        "roomID",
-        "Podaj #ID pokoju"
-    )
 
+    reservationID = (
+        "reservationID",
+        "Podaj #ID rezerwacji"
+    )
     reservationStart = (
         "reservationStart",
         "Podaj datę początku rezerwacji [DD.MM.RRRR]"

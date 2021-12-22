@@ -10,7 +10,7 @@ class Operations(Enum):
     #     identyfikator operacji: "przykładowa operacja",
     #     "opis operacji",
     #     lista parametrów: [parametr1, parametr2],
-    #     akcja z klasy Store, która ma zostać wywołana
+    #     wskaźnik do metody lub funkcja anonimowa, która ma zostać wywołana
     # )
 
     addRoom = (
@@ -49,6 +49,12 @@ class Operations(Enum):
         "Wyświetl listę rezerwacji",
         [],
         storage.reservations.listElements
+    )
+    cancelReservation = (
+        "cancelReservation",
+        "Anuluj rezerwację",
+        [Params.reservationID],
+        lambda params: storage.reservations.get(int(params[0])).cancelReservation()
     )
 
     def __new__(cls, *args, **kwds):
