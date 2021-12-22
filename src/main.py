@@ -2,20 +2,26 @@ import storage
 from classes.Store import Store
 from classes.Room import Room
 from classes.Reservation import Reservation
+from helpers.initData import initData
 
 
-def init():
-    # przygotowanie magazynu danych
+def initStorage():
     storage.rooms = Store(Room)
     storage.reservations = Store(Reservation)
     # storage.services = Store(Services)
 
 
 def main():
+    # przygotowanie magazynu danych
+    initStorage()
+
+    # wypełnienie magazynu przykładowymi danymi
+    initData()
+
     from definitions.Operations import Operations
 
-    # funkcja nasłuchująca operacji od użytkownika
     def listener():
+        # funkcja nasłuchująca operacji od użytkownika
 
         while True:
 
@@ -49,10 +55,7 @@ def main():
             # except:
             #     print("Problem occurred")
 
-    # todo runtests()
-
     listener()
 
 
-init()
 main()
