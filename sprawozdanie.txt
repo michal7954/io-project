@@ -1,0 +1,38 @@
+Standardy kodowania
+- podział projektu na małe, czytelne pliki
+- podział plików źródłowych na lokalizacje: classes, definitions, helpers
+- zmienne, funkcje, obiekty, instancje klas: camelCase
+- klasy, stałe obiekty definiujące: PascalCase
+
+Standardy dokumentowania
+- jako komentarze inline w kodzie
+- komentarze po polsku
+- UI po polsku
+
+Język implementacji i IDE
+- Python 3.9.6
+- Visual Studio ?wersja
+- wykorzystanie biblioteki Enum na potrzeby definiowania stałych
+Uzasadnienie:
+- Python jest jednym z języków najszybciej zdobywających popularność w ostatnim czasie.
+- Jest warty nauczenia się. Głównie wykorzystywany do celów naukowych, m.in. AI.
+- Prosta syntaktyka w porównaniu do rodziny C.
+- Brak typowania.
+- Niejawne przekazywanie wskaźników do funkcji/metod.
+- Rozbudowana ale łatwa obiektowość: konwersje typów, przeciążanie operatorów.
+- ?uzasadnienie VS
+
+Wykorzystanie repozytorium
+- GitHub
+- tablica kanban do zarządzania zadaniami https://github.com/michal7954/io-project/projects/1
+- nazwy commitów i branchy po polsku
+- commity na bieżąco jako pojedyncze podzadanie/samodzielna całość
+- nowy branch na każdą większą funkcjonalność
+- automatyczne mergowanie pool requestów do głównego brancha
+- code review na bieżąco z historii commitów
+
+Informacje o zaimplemetowanych testach jednostkowych
+- 
+
+TDD
+- 

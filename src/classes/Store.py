@@ -1,15 +1,20 @@
 class Store():
+    # MagazynDanych odpowiada za przechowywanie listy rekordów jednego z typów
     def __init__(self, ClassTemplate):
+        # dane są przechowywane w asocjacyjnej strukturze słownika
         self.elements = {}
         self.nextKey = 1
+        # typ przechowywanych elementów (Room/Reservation/Service)
         self.ClassTemplate = ClassTemplate
 
+    # magazyn ma zaimplementowaną funkcję zarządzania kluczami w oparciu o nextKey
     def generateKey(self):
         key = self.nextKey
         self.nextKey += 1
         return key
 
     def prepareObject(self, key, params):
+        # wywołanie konstruktora klasy potomnej
         element = self.ClassTemplate(key, params)
         if element.objectStatus == 'ok':
             return element

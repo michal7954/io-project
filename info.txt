@@ -1,0 +1,10 @@
+Projekt aplikacji do zarządzania hotelem.
+
+https://github.com/michal7954/io-project/
+
+Skład zespołu:
+Michał Madeja
+
+
+
+Grupa dziekańska nr 5.
