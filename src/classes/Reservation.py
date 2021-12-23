@@ -30,8 +30,18 @@ class Reservation():
         else:
             room.addReservation(self.key)
 
+    def getAccomodationStatus(self):
+        if self.accomodationStatus == AccomodationStatus.Reserved:
+            return 'zarezerwowana'
+        elif self.accomodationStatus == AccomodationStatus.Canceled:
+            return 'anulowana'
+        elif self.accomodationStatus == AccomodationStatus.Accommodated:
+            return 'zakwaterowanie'
+        elif self.accomodationStatus == AccomodationStatus.Ended:
+            return 'zakończona'
+
     def __str__(self):
-        return '#' + str(self.key) + ' pokój #' + str(self.roomKey) + ', ' + str(self.start) + '-' + str(self.end) + ', status ' + str(self.accomodationStatus)
+        return '#' + str(self.key) + ' pokój #' + str(self.roomKey) + ', ' + str(self.start) + '-' + str(self.end) + ', status ' + self.getAccomodationStatus()
 
     def cancelReservation(self):
         self.accomodationStatus = AccomodationStatus.Canceled
