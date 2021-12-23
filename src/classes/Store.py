@@ -1,3 +1,6 @@
+from definitions.ObjectStatus import ObjectStatus
+
+
 class Store():
     # MagazynDanych odpowiada za przechowywanie listy rekordów jednego z typów
     def __init__(self, ClassTemplate):
@@ -16,7 +19,7 @@ class Store():
     def prepareObject(self, key, params):
         # wywołanie konstruktora klasy potomnej
         element = self.ClassTemplate(key, params)
-        if element.objectStatus == 'ok':
+        if element.objectStatus == ObjectStatus.Ok:
             return element
         print('Błąd tworzenia obiektu')
         return None
