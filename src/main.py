@@ -52,8 +52,9 @@ def main():
             # todo zaawansowana weryfikacja i obsługa błędów
             # try:
             #     operation.run(params)
-            # except:
-            #     print("Problem occurred")
+            # except Exception as e:
+            #     print('Wystąpił problem')
+            #     print(e)
 
     listener()
 

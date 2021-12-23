@@ -5,38 +5,38 @@ class Params(Enum):
     # definicje wszystkich możliwych parametrów podawanych przez użytkownika w aplikacji
 
     # przykładowy parametr = (
-    #     identyfikator parametru: "przykładowy parametr",
+    #     identyfikator parametru: 'przykładowy parametr',
     #     opis parametru
     # )
 
     roomID = (
-        "roomID",
-        "Podaj #ID pokoju"
+        'roomID',
+        'Podaj #ID pokoju'
     )
     roomNumber = (
-        "roomNumber",
-        "Podaj numer pokoju",
+        'roomNumber',
+        'Podaj numer pokoju',
     )
     roomSize = (
-        "roomSize",
-        "Podaj rozmiar pokoju",
+        'roomSize',
+        'Podaj rozmiar pokoju',
     )
     costPerDay = (
-        "costPerDay",
-        "Podaj cenę za jedną noc wynajęcia pokoju (np. 49.99)"
+        'costPerDay',
+        'Podaj cenę za jedną noc wynajęcia pokoju (np. 49.99)'
     )
 
     reservationID = (
-        "reservationID",
-        "Podaj #ID rezerwacji"
+        'reservationID',
+        'Podaj #ID rezerwacji'
     )
     reservationStart = (
-        "reservationStart",
-        "Podaj datę początku rezerwacji [DD.MM.RRRR]"
+        'reservationStart',
+        'Podaj datę początku rezerwacji [DD.MM.RRRR]'
     )
     reservationEnd = (
-        "reservationEnd",
-        "Podaj datę końca rezerwacji [DD.MM.RRRR]"
+        'reservationEnd',
+        'Podaj datę końca rezerwacji [DD.MM.RRRR]'
     )
 
     def __new__(cls, *args, **kwds):
@@ -49,4 +49,4 @@ class Params(Enum):
 
     # wyświetlenie tekstowej zachęty
     def text(self):
-        return self.description + ": "
+        return self.description + ': '
