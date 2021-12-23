@@ -2,7 +2,7 @@ Standardy kodowania
 - podział projektu na małe, czytelne pliki
 - podział plików źródłowych na lokalizacje: classes, definitions, helpers
 - zmienne, funkcje, obiekty, instancje klas: camelCase
-- klasy, stałe obiekty definiujące: PascalCase
+- klasy, stałe, obiekty definiujące: PascalCase
 
 Standardy dokumentowania
 - jako komentarze inline w kodzie

@@ -1,3 +1,5 @@
+from definitions.AccomodationStatus import AccomodationStatus
+from definitions.ObjectStatus import ObjectStatus
 from helpers.dateIntervalsDivergent import dateIntervalsDivergent
 from classes.Date import Date
 import storage
@@ -9,7 +11,7 @@ class Room():
         self.key = key
         # lista kluczy rezerwacji przypisanych do tego pokoju
         self.reservations = []
-        self.objectStatus = 'ok'
+        self.objectStatus = ObjectStatus.Ok
 
         self.number = int(params[0])
         self.size = int(params[1])
