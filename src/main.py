@@ -1,14 +1,5 @@
-import storage
-from classes.Store import Store
-from classes.Room import Room
-from classes.Reservation import Reservation
+from helpers.initStorage import initStorage
 from helpers.initData import initData
-
-
-def initStorage():
-    storage.rooms = Store(Room)
-    storage.reservations = Store(Reservation)
-    # storage.services = Store(Services)
 
 
 def main():
