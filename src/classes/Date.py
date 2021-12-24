@@ -1,5 +1,7 @@
 # todo weryfikacja poprawności daty
 # todo operacja odejmowania dat
+from definitions.ObjectStatus import ObjectStatus
+
 
 class Date:
     # własna implementacja podstawowego obiektu daty
@@ -10,6 +12,7 @@ class Date:
         self.day = int(date[0])
         self.month = int(date[1])
         self.year = int(date[2])
+        self.objectStatus = ObjectStatus.Ok
 
     # konwersja daty do integera na potrzeby porównywania
     def __int__(self):
