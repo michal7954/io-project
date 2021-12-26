@@ -39,6 +39,27 @@ class Params(Enum):
         'Podaj datę końca rezerwacji [DD.MM.RRRR]'
     )
 
+    name = (
+        'name',
+        'Podaj imię'
+    )
+
+    surname = (
+        'surname',
+        'Podaj nazwisko'
+    )
+
+    pesel = (
+        'pesel',
+        'Podaj numer PESEL'
+    )
+
+    phone = (
+        'phone',
+        'Podaj numer telefonu'
+    )
+
+
     def __new__(cls, *args, **kwds):
         obj = object.__new__(cls)
         obj._value_ = args[0]

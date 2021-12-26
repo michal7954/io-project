@@ -17,10 +17,10 @@ class Reservation():
         self.end = Date(params[2])
         self.accomodationStatus = AccomodationStatus.Reserved
         self.paymentStatus = PaymentStatus.Unpaid
-        # self.name = str(params[3])
-        # self.surname = str(params[4])
-        # self.pesel = str(params[5])
-        # self.phone = str(params[6])
+        self.name = str(params[3])
+        self.surname = str(params[4])
+        self.pesel = str(params[5])
+        self.phone = str(params[6])
 
         # weryfikacja dostępności pokoju
         room = storage.rooms.get(self.roomKey)
@@ -39,9 +39,30 @@ class Reservation():
             return 'zakwaterowanie'
         elif self.accomodationStatus == AccomodationStatus.Ended:
             return 'zakończona'
+       
 
     def __str__(self):
-        return '#' + str(self.key) + ' pokój #' + str(self.roomKey) + ', ' + str(self.start) + '-' + str(self.end) + ', status ' + self.getAccomodationStatus()
+        return '#' + str(self.key) + ' pokój #' + str(self.roomKey) + ', ' + str(self.start) + '-' + str(self.end) +  ', status ' + self.getAccomodationStatus() + ', dane gościa: ' + str(self.name) + ' '  + str(self.surname) + ', nr PESEL: ' + str(self.pesel) + ', nr telefonu: ' + str(self.phone)
 
     def cancelReservation(self):
         self.accomodationStatus = AccomodationStatus.Canceled
+
+
+    def accomodation(self):
+        print("Weryfikacja tożsamości")
+        newName = input("Podaj imię: ")
+        newSurname = input("Podaj nazwisko: ")
+        newPesel = input("Podaj numer pesel: ")
+
+        if newName == self.name and newSurname == self.surname and newPesel == self.pesel:
+            self.accomodationStatus = AccomodationStatus.Accommodated
+            print("Zameldowano")
+        else:
+            print("Tożsamość nie została potwierdzona")
+
+
+
+        
+   
+
+            

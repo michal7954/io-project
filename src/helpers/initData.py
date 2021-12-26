@@ -24,21 +24,21 @@ def initData():
     storage.rooms.add([19, 1, 60])  # 18
     storage.rooms.add([20, 1, 49.99])  # 19
 
-    storage.reservations.add([1, '1.1.2022', '2.1.2022'])  # 1
-    storage.reservations.add([1, '3.1.2022', '7.1.2022'])  # 2
-    storage.reservations.add([1, '7.1.2022', '9.1.2022'])  # 3
-    storage.reservations.add([1, '10.1.2022', '23.1.2022'])  # 4
-    storage.reservations.add([1, '9.1.2022', '10.1.2022'])  # 5
-    storage.reservations.add([1, '24.1.2022', '31.1.2022'])  # 6
+    storage.reservations.add([1, '1.1.2022', '8.1.2022', 'Michał', 'Nowak', '111111111', '347218904'])  # 1
+    storage.reservations.add([1, '3.1.2022', '7.1.2022', 'Joanna', 'Kowalska', '92071314764', '125734890'])  # 2
+    storage.reservations.add([1, '7.1.2022', '9.1.2022', 'Klaudia', 'Wiśniewska', '81100216347', '189450893'])  # 3
+    storage.reservations.add([1, '10.1.2022', '23.1.2022', 'Natalia', 'Wójcik', '80072909146', '674409125'])  # 4
+    storage.reservations.add([1, '9.1.2022', '10.1.2022', 'Oliwia', 'Kowalczyk', '90080517425', '757980865'])  # 5
+    storage.reservations.add([1, '24.1.2022', '31.1.2022', 'Kamila', 'Kamińska', '90060804706', '740229678'])  # 6
 
-    storage.reservations.add([6, '1.1.2022', '3.1.2022'])  # 7
-    storage.reservations.add([6, '3.1.2022', '7.1.2022'])  # 8
-    storage.reservations.add([6, '9.1.2022', '24.1.2022'])  # 9
-    storage.reservations.add([6, '7.1.2022', '9.1.2022'])  # 10
-    storage.reservations.add([6, '24.1.2022', '30.1.2022'])  # 11
+    storage.reservations.add([6, '1.1.2022', '3.1.2022', 'Damian', 'Lewandowski', '91810112311', '478892220'])  # 7
+    storage.reservations.add([6, '3.1.2022', '7.1.2022', 'Grzegorz', 'Zieliński', '66420212332', '690449648'])  # 8
+    storage.reservations.add([6, '9.1.2022', '24.1.2022', 'Ewelina', 'Szymańska', '78242967240', '534715896' ])  # 9
+    storage.reservations.add([6, '7.1.2022', '9.1.2022', 'Aneta', 'Dąbrowska', '01232907945', '794707034'])  # 10
+    storage.reservations.add([6, '24.1.2022', '30.1.2022','Stanisław', 'Woźniak', '99372056795', '663203821'])  # 11
 
-    storage.reservations.add([7, '1.1.2022', '31.1.2022'])  # 12
+    storage.reservations.add([7, '1.1.2022', '31.1.2022', 'Dominik', 'Kozłowski', '87081472058', '294467200'])  # 12
 
-    storage.reservations.add([14, '1.1.2022', '3.1.2022'])  # 13
-    storage.reservations.add([14, '10.1.2022', '17.1.2022'])  # 14
-    storage.reservations.add([14, '24.1.2022', '31.1.2022'])  # 15
+    storage.reservations.add([14, '1.1.2022', '3.1.2022', 'Kamil', 'Jankowski', '00123027871', '267893621'])  # 13
+    storage.reservations.add([14, '10.1.2022', '17.1.2022', 'Paulina', 'Mazur', '92112671146', '378840255'])  # 14
+    storage.reservations.add([14, '24.1.2022', '31.1.2022', 'Jan', 'Kwiatkowski', '88100752214', '561129334'])  # 15

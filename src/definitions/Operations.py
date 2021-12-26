@@ -41,7 +41,7 @@ class Operations(Enum):
     addReservation = (
         'addReservation',
         'Utwórz rezerwację',
-        [Params.roomID, Params.reservationStart, Params.reservationEnd],
+        [Params.roomID, Params.reservationStart, Params.reservationEnd, Params.name, Params.surname, Params.pesel, Params.phone],
         storage.reservations.add
     )
     listReservations = (
@@ -55,6 +55,13 @@ class Operations(Enum):
         'Anuluj rezerwację',
         [Params.reservationID],
         lambda params: storage.reservations.get(int(params[0])).cancelReservation()
+    )
+
+    accomodation = (
+        'accomodation',
+        'Zamelduj',
+        [Params.reservationID],
+        lambda params: storage.reservations.get(int(params[0])).accomodation()
     )
 
     def __new__(cls, *args, **kwds):
