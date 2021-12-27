@@ -36,7 +36,10 @@ def main():
             # zebranie niezbędnych parametrów operacji
             for i in range(n):
                 param = operation.params[i]
-                params[i] = input(param.text())
+                if str(param)[0]=='p':
+                    print(param[2:])
+                else:
+                    params[i] = input(param.text())
 
             operation.run(params)
 

@@ -60,10 +60,10 @@ class Operations(Enum):
     accomodation = (
         'accomodation',
         'Zamelduj',
-        [Params.reservationID],
-        lambda params: storage.reservations.get(int(params[0])).accomodation()
-    )
-
+        [Params.reservationID,'p:Weryfikacja tożsamości', Params.name, Params.surname, Params.pesel],
+        lambda params: storage.reservations.get(int(params[0])).accomodation(params[2:])
+        )
+  
     def __new__(cls, *args, **kwds):
         obj = object.__new__(cls)
         obj._value_ = args[0]

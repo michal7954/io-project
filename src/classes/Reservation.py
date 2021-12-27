@@ -48,13 +48,9 @@ class Reservation():
         self.accomodationStatus = AccomodationStatus.Canceled
 
 
-    def accomodation(self):
-        print("Weryfikacja tożsamości")
-        newName = input("Podaj imię: ")
-        newSurname = input("Podaj nazwisko: ")
-        newPesel = input("Podaj numer pesel: ")
-
-        if newName == self.name and newSurname == self.surname and newPesel == self.pesel:
+    def accomodation(self,params):
+        # Sprawdzamy czy dane wprowadzone przy rezerwacji zgadają się z tymi podanymi przy zameldowaniu
+        if params[0]==self.name and params[1]==self.surname and params[2]==self.pesel:
             self.accomodationStatus = AccomodationStatus.Accommodated
             print("Zameldowano")
         else:
