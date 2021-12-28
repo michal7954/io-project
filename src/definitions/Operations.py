@@ -74,7 +74,7 @@ class Operations(Enum):
         'checkPaymentStatus',
         'Sprawdź status płatności rezerwacji',
         [Params.reservationID],
-        lambda params: storage.reservations.get(int(params[0])).checkPaymentStatus()
+        lambda params: storage.reservations.get(int(params[0])).checkPaymentStatus(params[0])
         )
   
     def __new__(cls, *args, **kwds):
