@@ -24,7 +24,7 @@ def initData():
     storage.rooms.add([19, 1, 60])  # 18
     storage.rooms.add([20, 1, 49.99])  # 19
 
-    storage.reservations.add([1, '1.1.2022', '8.1.2022', 'Michał', 'Nowak', '111111111', '347218904'])  # 1
+    storage.reservations.add([1, '1.1.2022', '2.1.2022', 'Michał', 'Nowak', '111111111', '347218904'])  # 1
     storage.reservations.add([1, '3.1.2022', '7.1.2022', 'Joanna', 'Kowalska', '92071314764', '125734890'])  # 2
     storage.reservations.add([1, '7.1.2022', '9.1.2022', 'Klaudia', 'Wiśniewska', '81100216347', '189450893'])  # 3
     storage.reservations.add([1, '10.1.2022', '23.1.2022', 'Natalia', 'Wójcik', '80072909146', '674409125'])  # 4

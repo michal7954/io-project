@@ -1,5 +1,4 @@
 # todo weryfikacja poprawności daty
-# todo operacja odejmowania dat
 from definitions.ObjectStatus import ObjectStatus
 
 

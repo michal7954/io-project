@@ -63,6 +63,19 @@ class Operations(Enum):
         [Params.reservationID,'p:Weryfikacja tożsamości', Params.name, Params.surname, Params.pesel],
         lambda params: storage.reservations.get(int(params[0])).accomodation(params[2:])
         )
+    pay = (
+        'pay',
+        'Zapłać',
+        [Params.reservationID, Params.paymentMethods],
+        lambda params: storage.reservations.get(int(params[0])).markPaid(params[1])
+        )
+    
+    checkPaymentStatus = (
+        'checkPaymentStatus',
+        'Sprawdź status płatności rezerwacji',
+        [Params.reservationID],
+        lambda params: storage.reservations.get(int(params[0])).checkPaymentStatus()
+        )
   
     def __new__(cls, *args, **kwds):
         obj = object.__new__(cls)
