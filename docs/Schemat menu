@@ -1,0 +1,171 @@
+Schemat menu głównego programu rezerwacji hotelowej.
+
+///...Wymuszone logowanie...///
+	1. Klient
+	2. Obsługa
+		Podaj ID
+		Podaj hasło dla ID: xxx
+	3. Kierownik
+		Podaj hasło dla kierownik
+        4.Gość
+	0. Zakończ
+
+///...Menu Główne...///
+
+	//..dla klient..//
+		1. Zarezerwuj pokój
+		2. Kontakt
+		0. Zakończ
+        //dla gościa//
+	powyższe oraz:
+	3.Usługi
+	
+
+	//..dla obsługa..//
+	powyższe oraz:
+		4. Zablokuj pokój- zarezerwowany
+		5. Odblokuj pokój - zwrócony
+	        6. Rezerwacja
+	
+	//..dla kierownik..//
+	powyższe oraz:
+		7. Wyświetl ID pokoi
+		8. Edytuj pokój
+		9. Dodaj pokój do oferty
+		10. Usuń pokój z oferty
+	
+
+		
+
+
+		///... 1. Zarezerwuj pokój ...///
+		1. Podanie daty wypożyczenia (porównywanie daty)
+		
+			Wybór standardu pokoju:
+			1. jednosobowy
+			2. dwuosobowy
+			
+
+				Standard jednososbowy:
+				1. ..... dostepny / nie (bool)
+				2.  .....
+				3. ...
+				0. Powrót
+
+					Pokój 1:
+					Dane i opis pokoju
+					1. Zarezerwuj i przejdz do wyboru platnosci 
+					0. Anuluj
+						
+						Metoda płatności:
+						1. Płatność internetowa
+							1. Płatność kartą.
+							2. Płatność przelewem.
+						2. Płatność na miejscu (przy odbiorze pokoju)
+						3.Płatność na miejscu(na koniec pobytu)
+						0. Anuluj (Powrót do menu głównego)
+
+
+		
+
+		
+		
+		
+		///...2. Kontakt...///
+		
+			Nazwa
+			Adres
+			NIP
+			Adres e-mail
+			
+			1. Formularz kontaktowy
+				Pole tekstowe
+				1. Wyślij
+				0. Anuluj / Powrót
+			0. Powrót
+		///...3.Usługi...///
+		
+		1.Wezwij sprzątaczkę
+		2.Zamów posiłek do pokoju
+		
+		
+		///...4. Zablokuj pokój - wypożyczony...///
+		
+			Podaj datę wypożyczenia pokoju
+			Podaj ID spokoju
+			1. Zapisz
+			0. Anuluj
+			
+		
+		///...5. Odblokuj pokój - zwrocony...///
+		
+			Podaj datę zwrócenia pokoju
+			Podaj ID samochodu
+			1. Zapisz
+			0. Anuluj
+			
+		
+		///...6. Rezerwacja...///
+		???
+		
+		///...7. Wyświetl ID pokoi...///
+		
+				Lista pokoi
+				ID | Standard |  Cena
+				
+				0. Powrót
+			
+			
+		///...8. Edytuj pokoj...///
+		
+			Podaj ID pokoju
+			
+				
+			1. Cena
+				Aktualna cena: xxx
+				Podaj nową cenę: xxx
+				1. Potwierdź
+				0. Anuluj / Powrót
+			
+			2. ID (Wymaga ponownego wpisania w celu edycji samochodu o nowym ID)
+				Aktualne ID: xxx
+				Nowe ID: xxx
+				1. Potwierdź
+				0. Anuluj / Powrót
+			3. Dostępność samochodu
+				Aktualnie dostępny: tak / nie
+				Zmiana na: 
+					1. Dostępny (tak)
+					2. Niedostępny (nie)
+				0. Anuluj / Powrót
+			
+		
+		
+		///...9. dodaj pokój do oferty...///
+		
+			Podaj Nazwę pokoju
+			Podaj Standard pokoju
+			Podaj Cenę pokoju
+			
+			Podaj ID pokoju (jeśli nie podane, automatycznie dodaje 1 do poprzedniego)
+				ID ostatniego pokoju: xxx
+			1. Zatwierdź
+			0. Anuluj / Powrót
+		
+		
+		///...10. usun pokój z oferty...///
+		
+			Podaj ID pokoju
+				Pokój: ID | Nazwa zostanie całkowicie usunięty z bazy, czy kontynuować?
+				1. Tak
+					Podaj hasło: (hasło do usuwania inne niz dla kierownik)
+						Pomyślnie usunięto.
+						Błędne hasło.
+				0. Nie (Powrót)
+				
+			
+		
+			
+		
+		
+		
