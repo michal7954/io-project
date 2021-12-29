@@ -1,15 +1,18 @@
-Standardy kodowania
+Wstęp teoretyczny:
+Dostarczone oprogramowanie ma na celu ułatwienie prowadzenia rejestracji hotelu. Aplikacja została stworzona do działania w systemie Windows. Nie wymaga ona instalacji.
+
+Standardy kodowania:
 - podział projektu na małe, czytelne pliki
 - podział plików źródłowych na lokalizacje: classes, definitions, helpers
 - zmienne, funkcje, obiekty, instancje klas: camelCase
 - klasy, stałe, obiekty definiujące: PascalCase
 
-Standardy dokumentowania
+Standardy dokumentowania:
 - jako komentarze inline w kodzie
 - komentarze po polsku
 - UI po polsku
 
-Język implementacji i IDE
+Język implementacji i IDE:
 - Python 3.9.6
 - Visual Studio ?wersja
 - wykorzystanie biblioteki Enum na potrzeby definiowania stałych
@@ -22,7 +25,7 @@ Uzasadnienie:
 - Rozbudowana ale łatwa obiektowość: konwersje typów, przeciążanie operatorów.
 - ?uzasadnienie VS
 
-Wykorzystanie repozytorium
+Wykorzystanie repozytorium:
 - GitHub
 - tablica kanban do zarządzania zadaniami https://github.com/michal7954/io-project/projects/1
 - nazwy commitów i branchy po polsku
@@ -31,8 +34,19 @@ Wykorzystanie repozytorium
 - automatyczne mergowanie pool requestów do głównego brancha
 - code review na bieżąco z historii commitów
 
-Informacje o zaimplemetowanych testach jednostkowych
+Informacje o zaimplemetowanych testach jednostkowych:
 - 
 
-TDD
+TDD:
 - 
+
+Każdy podmiot posiada pewne uprawnienia do wykonywania operacji w wypożyczalni:
+Klient:
+-
+
+Opis dostępnych operacji:
+-
+
+Wprowadzenie innych liczb niż te powyższe spowoduje wyświetlenie komunikatu o błędnych danych i wprowadzeniu poprawnej liczby.
+
+Dokumentacja opisuje działanie oprogramowania w wersji z dnia 29-12-2021.
