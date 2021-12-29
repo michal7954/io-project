@@ -41,7 +41,15 @@ TDD:
 - 
 
 Każdy podmiot posiada pewne uprawnienia do wykonywania operacji w wypożyczalni:
-Klient:
+Użytkownik (potencjalny klient):
+-
+Kierownik hotelu (administrator systemu):
+-
+Gość hotelu:
+-
+Recepcjonista:
+-
+Obsługa:
 -
 
 Opis dostępnych operacji:
