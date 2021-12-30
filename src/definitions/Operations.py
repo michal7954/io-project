@@ -63,6 +63,14 @@ class Operations(Enum):
         [Params.reservationID,'p:Weryfikacja tożsamości', Params.name, Params.surname, Params.pesel],
         lambda params: storage.reservations.get(int(params[0])).accomodation(params[2:])
         )
+
+    checkOut = (
+        'checkOut',
+        'Wymelduj',
+        [Params.reservationID,'p:Weryfikacja tożsamości', Params.name, Params.surname, Params.pesel],
+        lambda params: storage.reservations.get(int(params[0])).checkOut(params[2:])
+        )
+
     pay = (
         'pay',
         'Zapłać',

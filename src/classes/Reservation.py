@@ -61,6 +61,17 @@ class Reservation():
         else:
             print('Tożsamość nie została potwierdzona')
 
+    # Wymeldowanie
+    def checkOut(self, params):
+        if params[0]==self.name and params[1]==self.surname and params[2]==self.pesel:
+            if  self.paymentStatus == PaymentStatus.Paid:
+                 self.accomodationStatus = AccomodationStatus.Ended
+                 print('Wymeldowano. Dziękujemy za pobyt')
+            else:
+               print('Musisz dokonać płatności')
+        else:
+            print('Tożsamość nie została potwierdzona')
+
     # Sprawdzenie statusu płatności podanej rezerwacji (opłacona,odroczona,niepołacona)
     def checkPaymentStatus(self, params):
         if  self.paymentStatus == PaymentStatus.Paid:
