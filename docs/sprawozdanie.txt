@@ -14,7 +14,7 @@ Standardy dokumentowania:
 
 Język implementacji i IDE:
 - Python 3.9.6
-- Visual Studio ?wersja
+- Visual Studio 2019 
 - wykorzystanie biblioteki Enum na potrzeby definiowania stałych
 Uzasadnienie:
 - Python jest jednym z języków najszybciej zdobywających popularność w ostatnim czasie.
@@ -23,7 +23,10 @@ Uzasadnienie:
 - Brak typowania.
 - Niejawne przekazywanie wskaźników do funkcji/metod.
 - Rozbudowana ale łatwa obiektowość: konwersje typów, przeciążanie operatorów.
-- ?uzasadnienie VS
+- Visual Studio 2022 jest darmowym środowikiem.
+- Platforma uniwersalna systemu Windows, systemy iOS i Android.
+- Umożliwia współpracę na kodem za pomoca usługi Git.
+- Łatwe połączone z aplikacją GitHub.
 
 Wykorzystanie repozytorium:
 - GitHub
@@ -35,7 +38,9 @@ Wykorzystanie repozytorium:
 - code review na bieżąco z historii commitów
 
 Informacje o zaimplemetowanych testach jednostkowych:
-- 
+- Testy zostały zaimplementowane w celu sprawdzenia poprawności działania pojedynczych elementów kodu.
+- Testowana jest poprawność wprowadzanych danych podczas rezerwacji czy odpowiadają one założeniom technicznym.
+- Testowana jest poprawnośc wprowadzonych dat, czy nie wykraczają one poza zakres rzeczywistych.
 
 TDD:
 - 
@@ -53,8 +58,15 @@ Obsługa:
 -
 
 Opis dostępnych operacji:
--
+1)addRoom: Dodaj pokój- 
+2)modifyRoom: Zmodyfikuj pokój-
+3)removeRoom: Usuń pokój-
+4)listRoom: Wyświetl listę pokoi-
+5)addReservations: Utwórz rezerwację-
+6)listReservations: Wyświetl listę rezerwacji-
+7)cancelReservations: Anuluj rezerwację-
+8)accomadaion: Zamelduj-
 
-Wprowadzenie innych liczb niż te powyższe spowoduje wyświetlenie komunikatu o błędnych danych i wprowadzeniu poprawnej liczby.
+Wprowadzenie innych liczb niż te powyższe spowoduje wyświetlenie komunikatu o niepoprawnej nazwie operacji i następuje powrót do menu.
 
-Dokumentacja opisuje działanie oprogramowania w wersji z dnia 29-12-2021.
+Dokumentacja opisuje działanie oprogramowania w wersji z dnia 30-12-2021.
