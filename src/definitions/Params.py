@@ -59,6 +59,11 @@ class Params(Enum):
         'Podaj numer telefonu'
     )
 
+    paymentMethods = (
+        'paymentMethod',
+        'Wybierz metodę płatności [gotówka, karta, telefon, BLIK]'
+        )
+
 
     def __new__(cls, *args, **kwds):
         obj = object.__new__(cls)
