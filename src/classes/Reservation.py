@@ -1,6 +1,7 @@
 from definitions.ObjectStatus import ObjectStatus
 from definitions.AccomodationStatus import AccomodationStatus
 from definitions.PaymentStatus import PaymentStatus
+from definitions.PaymentMethod import PaymentMethod
 import storage
 from classes.Date import Date
 from helpers.numberOfDays import numberOfDays
@@ -23,6 +24,7 @@ class Reservation():
         self.surname = str(params[4])
         self.pesel = str(params[5])
         self.phone = str(params[6])
+        self.paymentMethod = PaymentMethod.NotChosen
 
         # weryfikacja dostępności pokoju
         room = storage.rooms.get(self.roomKey)
@@ -70,10 +72,23 @@ class Reservation():
             
     # Realizacja płatności i zmiana statusu
     def markPaid(self, params):
+        if self.accomodationStatus == AccomodationStatus.Canceled or self.accomodationStatus == AccomodationStatus.Ended:
+            print('Rezerwacja nieaktualna')
+            return
         if  self.paymentStatus == PaymentStatus.Paid:
             print('Rezerwacja opłacona')
             return
 
+        # Zapisanie metody płatności
+        if params=='gotówka':
+            self.paymentMethod = PaymentMethod.Cash
+        if params=='karta':
+            self.paymentMethod = PaymentMethod.Card
+        if params=='telefon':
+            self.paymentMethod = PaymentMethod.Phone
+        if params=='BLIK':
+            self.paymentMethod = PaymentMethod.Blik
+        
         # Obliczanie ceny pobytu 
         room = storage.rooms.get(self.roomKey)
         number = numberOfDays(self.start,self.end)
