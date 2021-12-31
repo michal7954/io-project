@@ -1,5 +1,6 @@
 from enum import Enum
 from definitions.Params import Params
+from helpers.systemOperations import logout
 import storage
 
 
@@ -84,6 +85,13 @@ class Operations(Enum):
         [Params.reservationID],
         lambda params: storage.reservations.get(int(params[0])).checkPaymentStatus(params[0])
         )
+
+    logout = (
+        'logout',
+        'Wyloguj i wybierz nowego użytkownika',
+        [],
+        logout
+    )
   
     def __new__(cls, *args, **kwds):
         obj = object.__new__(cls)
@@ -94,8 +102,7 @@ class Operations(Enum):
         self.description = description
         self.params = params
         self.run = run
-        # self.actors = actors
 
     # wyświetlenie pozycji w menu
-    def menuOption(self):
+    def printMenuOption(self):
         print(self.value + ': ' + self.description)
