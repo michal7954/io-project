@@ -25,6 +25,8 @@ class Room():
     def checkAvailability(self, start: Date, end: Date):
         for reservationKey in self.reservations:
             reservation = storage.reservations.get(reservationKey)
+            if reservation.accomodationStatus == AccomodationStatus.Canceled:
+                continue
             if not dateIntervalsDivergent(start, end, reservation.start, reservation.end):
                 return False
         return True
