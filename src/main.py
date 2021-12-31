@@ -17,7 +17,7 @@ def main():
         print('Wybierz użytkownika')
         print('[identyfikator: opis użytkownika]')
         for user in Users:
-            user.printMenuOption()
+            print(user.getMenuOption())
 
         user = input('Podaj identyfikator: ')
 
@@ -27,8 +27,6 @@ def main():
         else:
             storage.currentUser = user
 
-
-    # from definitions.Operations import Operations
 
     def listener():
         # funkcja nasłuchująca operacji od użytkownika
@@ -46,11 +44,11 @@ def main():
             # wypisz dostępne operacje
             print()
             print('Wybierz operację')
-            print('[identyfikator: opis operacji]')
-            for operation in userOperations:
-                operation.printMenuOption()
+            print('[#numer identyfikator: opis operacji]')
+            for index, operation in enumerate(userOperations, start=1):
+                print(f'#{index} {operation.getMenuOption()}')
 
-            operation = input('Podaj identyfikator: ')
+            operation = input('Podaj numer lub identyfikator: ')
             operation = getUserOperation(operation, userOperations)
 
             # operacja nie istnieje

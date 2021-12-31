@@ -104,5 +104,5 @@ class Operations(Enum):
         self.run = run
 
     # wyświetlenie pozycji w menu
-    def printMenuOption(self):
-        print(self.value + ': ' + self.description)
+    def getMenuOption(self):
+        return self.value + ': ' + self.description

@@ -72,5 +72,5 @@ class Users(Enum):
         self.operations = operations
 
     # wyświetlenie pozycji w menu
-    def printMenuOption(self):
-        print(self.value + ': ' + self.description)
+    def getMenuOption(self):
+        return self.value + ': ' + self.description
