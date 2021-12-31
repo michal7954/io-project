@@ -1,6 +1,7 @@
+from helpers.getUserOperation import getUserOperation
 from helpers.initStorage import initStorage
 from helpers.initData import initData
-
+import storage
 
 def main():
     # przygotowanie magazynu danych
@@ -9,26 +10,49 @@ def main():
     # wypełnienie magazynu przykładowymi danymi
     initData()
 
-    from definitions.Operations import Operations
+    from definitions.Users import Users
+    def login():
+
+        print()
+        for user in Users:
+            user.printMenuOption()
+
+        user = input('Podaj identyfikator: ')
+
+        # użytkownik nie istnieje
+        if not hasattr(Users, user):
+            print('Niepoprawny identyfikator użytkownika')
+        else:
+            storage.currentUser = user
+
+
+    # from definitions.Operations import Operations
 
     def listener():
         # funkcja nasłuchująca operacji od użytkownika
 
         while True:
 
-            # wypisz dostępne operacje
-            print()
-            for operation in Operations:
-                operation.menuOption()
-
-            operation = input()
-
-            # operacja nie istnieje
-            if not hasattr(Operations, operation):
-                print('Niepoprawna nazwa operacji')
+            # logowanie użytkownika
+            if storage.currentUser == None:
+                login()
                 continue
 
-            operation = Operations[operation]
+            # pobranie listy dostępnych operacji
+            userOperations = Users[storage.currentUser].operations
+
+            # wypisz dostępne operacje
+            print()
+            for operation in userOperations:
+                operation.printMenuOption()
+
+            operation = input()
+            operation = getUserOperation(operation, userOperations)
+
+            # operacja nie istnieje
+                print('Niepoprawna nazwa operacji')
+            if operation == None:
+                continue
 
             n = len(operation.params)
             params = [None for _ in range(n)]
@@ -55,6 +79,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
-
-

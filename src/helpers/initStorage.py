@@ -5,6 +5,7 @@ from classes.Reservation import Reservation
 
 
 def initStorage():
+    storage.currentUser = None
     storage.rooms = Store(Room)
     storage.reservations = Store(Reservation)
     # storage.services = Store(Services)
