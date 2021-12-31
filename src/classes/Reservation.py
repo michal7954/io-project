@@ -53,7 +53,7 @@ class Reservation():
         self.accomodationStatus = AccomodationStatus.Canceled
 
 
-    def accomodation(self,params):
+    def accommodate(self,params):
         # Sprawdzamy czy dane wprowadzone przy rezerwacji zgadają się z tymi podanymi przy zameldowaniu
         if params[0]==self.name and params[1]==self.surname and params[2]==self.pesel:
             self.accomodationStatus = AccomodationStatus.Accommodated

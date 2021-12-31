@@ -57,11 +57,11 @@ class Operations(Enum):
         lambda params: storage.reservations.get(int(params[0])).cancelReservation()
     )
 
-    accomodation = (
-        'accomodation',
+    accommodate = (
+        'accommodate',
         'Zamelduj',
         [Params.reservationID,'p:Weryfikacja tożsamości', Params.name, Params.surname, Params.pesel],
-        lambda params: storage.reservations.get(int(params[0])).accomodation(params[2:])
+        lambda params: storage.reservations.get(int(params[0])).accommodate(params[2:])
         )
 
     checkOut = (
