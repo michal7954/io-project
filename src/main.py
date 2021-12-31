@@ -14,6 +14,8 @@ def main():
     def login():
 
         print()
+        print('Wybierz użytkownika')
+        print('[identyfikator: opis użytkownika]')
         for user in Users:
             user.printMenuOption()
 
@@ -43,15 +45,17 @@ def main():
 
             # wypisz dostępne operacje
             print()
+            print('Wybierz operację')
+            print('[identyfikator: opis operacji]')
             for operation in userOperations:
                 operation.printMenuOption()
 
-            operation = input()
+            operation = input('Podaj identyfikator: ')
             operation = getUserOperation(operation, userOperations)
 
             # operacja nie istnieje
-                print('Niepoprawna nazwa operacji')
             if operation == None:
+                print('Niepoprawny identyfikator operacji')
                 continue
 
             n = len(operation.params)
