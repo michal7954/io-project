@@ -73,7 +73,7 @@ class Reservation():
             print('Tożsamość nie została potwierdzona')
 
     # Sprawdzenie statusu płatności podanej rezerwacji (opłacona,odroczona,niepołacona)
-    def checkPaymentStatus(self, params):
+    def checkPaymentStatus(self, _):
         if  self.paymentStatus == PaymentStatus.Paid:
             print('Rezerwacja opłacona')
         if  self.paymentStatus == PaymentStatus.Deferred:
