@@ -5,34 +5,39 @@ from definitions.PaymentMethod import PaymentMethod
 import storage
 from classes.Date import Date
 from helpers.numberOfDays import numberOfDays
+from helpers.correctData import correctReservation
 from time import sleep
+
 
 
 class Reservation():
     # params = [roomKey, startString, endString]
     def __init__(self, key, params):
-        self.key = key
-        # klucz pokoju przypisanego do tej rezerwacji
-        self.roomKey = int(params[0])
-        self.objectStatus = ObjectStatus.Ok
+        if correctReservation(params):
+            self.key = key
+            # klucz pokoju przypisanego do tej rezerwacji
+            self.roomKey = int(params[0])
+            self.objectStatus = ObjectStatus.Ok
 
-        self.start = Date(params[1])
-        self.end = Date(params[2])
-        self.accomodationStatus = AccomodationStatus.Reserved
-        self.paymentStatus = PaymentStatus.Unpaid
-        self.name = str(params[3])
-        self.surname = str(params[4])
-        self.pesel = str(params[5])
-        self.phone = str(params[6])
-        self.paymentMethod = PaymentMethod.NotChosen
+            self.start = Date(params[1])
+            self.end = Date(params[2])
+            self.accomodationStatus = AccomodationStatus.Reserved
+            self.paymentStatus = PaymentStatus.Unpaid
+            self.name = str(params[3])
+            self.surname = str(params[4])
+            self.pesel = str(params[5])
+            self.phone = str(params[6])
+            self.paymentMethod = PaymentMethod.NotChosen
 
-        # weryfikacja dostępności pokoju
-        room = storage.rooms.get(self.roomKey)
-        if not room.checkAvailability(self.start, self.end):
-            print('Pokój niedostępny w tym terminie')
-            self.objectStatus = ObjectStatus.Forbidden
+            # weryfikacja dostępności pokoju
+            room = storage.rooms.get(self.roomKey)
+            if not room.checkAvailability(self.start, self.end):
+                print('Pokój niedostępny w tym terminie')
+                self.objectStatus = ObjectStatus.Forbidden
+            else:
+                room.addReservation(self.key)
         else:
-            room.addReservation(self.key)
+            self.objectStatus = ObjectStatus.Forbidden
 
     def getAccomodationStatus(self):
         if self.accomodationStatus == AccomodationStatus.Reserved:

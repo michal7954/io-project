@@ -1,17 +1,21 @@
 # todo weryfikacja poprawności daty
 from definitions.ObjectStatus import ObjectStatus
+from helpers.correctData import correctDate
 
 
 class Date:
     # własna implementacja podstawowego obiektu daty
     # możliwe operacje porównania dat: <, <=, >=
     def __init__(self, dateString):
-        # format zmiennej dateString: DD.MM.RRRR
-        date = dateString.split('.')
-        self.day = int(date[0])
-        self.month = int(date[1])
-        self.year = int(date[2])
-        self.objectStatus = ObjectStatus.Ok
+        if correctDate(dateString):
+            # format zmiennej dateString: DD.MM.RRRR
+            date = dateString.split('.')
+            self.day = int(date[0])
+            self.month = int(date[1])
+            self.year = int(date[2])
+            self.objectStatus = ObjectStatus.Ok
+        else:
+            self.objectStatus = ObjectStatus.Forbidden
 
     # konwersja daty do integera na potrzeby porównywania
     def __int__(self):

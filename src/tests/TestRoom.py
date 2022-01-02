@@ -15,17 +15,18 @@ class TestRoom(unittest.TestCase):
     def test_1(self):
         room = Room(
             101,
-            ['1', '4', '32.30']
+            ['1', '4', '32.30','*']
         )
         self.assertEqual(room.number, 1)
         self.assertEqual(room.size, 4)
         self.assertEqual(room.costPerDay, 32.3)
+        self.assertEqual(room.standard, '*')
         self.assertEqual(room.objectStatus, ObjectStatus.Ok)
 
     def test_2(self):
         room = Room(
             101,
-            ['wqer', 'qwer', 'qwer']
+            ['1', '4', 'Pięć','*']
         )
         self.assertEqual(room.objectStatus, ObjectStatus.Forbidden,
                          'Nieobsłużony błędny typ danych')
@@ -33,7 +34,7 @@ class TestRoom(unittest.TestCase):
     def test_3(self):
         room = Room(
             101,
-            ['sdfa', '2', '3']
+            ['nr.1', '2', '3.00','*']
         )
         self.assertEqual(room.objectStatus, ObjectStatus.Forbidden,
                          'Nieobsłużony błędny typ danych')
@@ -41,7 +42,7 @@ class TestRoom(unittest.TestCase):
     def test_4(self):
         room = Room(
             101,
-            ['1', 'qwer', '3']
+            ['1', '6', '3.00','*']
         )
         self.assertEqual(room.objectStatus, ObjectStatus.Forbidden,
                          'Nieobsłużony błędny typ danych')
@@ -49,7 +50,7 @@ class TestRoom(unittest.TestCase):
     def test_5(self):
         room = Room(
             101,
-            ['1', '2', 'qwer']
+            ['1', '2', '3','*']
         )
         self.assertEqual(room.objectStatus, ObjectStatus.Forbidden,
                          'Nieobsłużony błędny typ danych')

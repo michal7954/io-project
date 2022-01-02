@@ -3,26 +3,26 @@ import storage
 
 def initData():
 
-    storage.rooms.add([1, 4, 40])  # 1
-    storage.rooms.add([2, 2, 50])  # 2
-    storage.rooms.add([3, 5, 60])  # 3
-    storage.rooms.add([4, 4, 40])  # 4
-    storage.rooms.add([5, 4, 50])  # 5
-    storage.rooms.add([6, 2, 60])  # 6
-    storage.rooms.add([7, 2, 40])  # 7
-    storage.rooms.add([8, 2, 50])  # 8
-    storage.rooms.add([9, 2, 60])  # 9
-    storage.rooms.add([10, 4, 40])  # 10
-    storage.rooms.add([11, 4, 50])  # 11
-    storage.rooms.add([12, 3, 60])  # 12
+    storage.rooms.add([1, 4, 40.50, '*'])  # 1
+    storage.rooms.add([2, 2, 50.40, '**'])  # 2
+    storage.rooms.add([3, 5, 60.55, '***'])  # 3
+    storage.rooms.add([4, 4, 40.60, '*'])  # 4
+    storage.rooms.add([5, 4, 50.00, '**'])  # 5
+    storage.rooms.add([6, 2, 60.15, '***'])  # 6
+    storage.rooms.add([7, 2, 40.90, '*'])  # 7
+    storage.rooms.add([8, 2, 50.80, '*'])  # 8
+    storage.rooms.add([9, 2, 60.00, '***'])  # 9
+    storage.rooms.add([10, 4, 40.00, '**'])  # 10
+    storage.rooms.add([11, 4, 50.80, '**'])  # 11
+    storage.rooms.add([12, 3, 60.25, '***'])  # 12
 
-    storage.rooms.add([14, 3, 40])  # 13
-    storage.rooms.add([15, 1, 50])  # 14
-    storage.rooms.add([16, 2, 60])  # 15
-    storage.rooms.add([17, 3, 40])  # 16
-    storage.rooms.add([18, 2, 50])  # 17
-    storage.rooms.add([19, 1, 60])  # 18
-    storage.rooms.add([20, 1, 49.99])  # 19
+    storage.rooms.add([14, 3, 40.60, '*'])  # 13
+    storage.rooms.add([15, 1, 50.55, '**'])  # 14
+    storage.rooms.add([16, 2, 60.90, '***'])  # 15
+    storage.rooms.add([17, 3, 40.85, '*'])  # 16
+    storage.rooms.add([18, 2, 50.90, '**'])  # 17
+    storage.rooms.add([19, 1, 60.00, '***'])  # 18
+    storage.rooms.add([20, 1, 49.99, '**'])  # 19
 
     storage.reservations.add([1, '1.1.2022', '2.1.2022', 'Michał', 'Nowak', '12345678910', '347218904'])  # 1
     storage.reservations.add([1, '3.1.2022', '7.1.2022', 'Joanna', 'Kowalska', '92071314764', '125734890'])  # 2

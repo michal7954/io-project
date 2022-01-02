@@ -26,6 +26,11 @@ class Params(Enum):
         'Podaj cenę za jedną noc wynajęcia pokoju (np. 49.99)'
     )
 
+    standard = (
+        'standard',
+        'Podaj standard pokoju (*, **, lub ***)'
+     )
+
     reservationID = (
         'reservationID',
         'Podaj #ID rezerwacji'
