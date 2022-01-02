@@ -72,7 +72,7 @@ class Reservation():
             print('Tożsamość nie została potwierdzona')
 
     # Sprawdzenie statusu płatności podanej rezerwacji (opłacona,odroczona,niepołacona)
-    def checkPaymentStatus(self, _):
+    def checkPaymentStatus(self):
         if  self.paymentStatus == PaymentStatus.Paid:
             print('Rezerwacja opłacona')
         if  self.paymentStatus == PaymentStatus.Deferred:
@@ -90,13 +90,14 @@ class Reservation():
             return
 
         # Zapisanie metody płatności
-        if params=='gotówka':
+        method = params[1]
+        if method=='gotówka':
             self.paymentMethod = PaymentMethod.Cash
-        if params=='karta':
+        if method=='karta':
             self.paymentMethod = PaymentMethod.Card
-        if params=='telefon':
+        if method=='telefon':
             self.paymentMethod = PaymentMethod.Phone
-        if params=='BLIK':
+        if method=='BLIK':
             self.paymentMethod = PaymentMethod.Blik
         
         # Obliczanie ceny pobytu 
@@ -119,14 +120,14 @@ class Reservation():
                     self.paymentStatus = PaymentStatus.Paid
                     print('...')
                     sleep(3)
-                    print(f'Zapłacono. Użyta metoda płatności: {params}')
+                    print(f'Zapłacono. Użyta metoda płatności: {method}')
                 else:
                     print('Błędnie wprowadzona odpowiedź. Podaj "TAK" lub "NIE".')
         else:
             self.paymentStatus = PaymentStatus.Paid
             print('...')
             sleep(3)
-            print(f'Zapłacono. Użyta metoda płatności: {params}')
+            print(f'Zapłacono. Użyta metoda płatności: {method}')
 
 
         

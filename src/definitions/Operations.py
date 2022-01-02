@@ -61,14 +61,14 @@ class Operations(Enum):
     accommodate = (
         'accommodate',
         'Zamelduj',
-        [Params.reservationID,'Weryfikacja tożsamości', Params.name, Params.surname, Params.pesel],
+        [Params.reservationID, 'Weryfikacja tożsamości', Params.name, Params.surname, Params.pesel],
         lambda params: storage.reservations.get(int(params[0])).accommodate(params[2:])
     )
 
     checkOut = (
         'checkOut',
         'Wymelduj',
-        [Params.reservationID,'Weryfikacja tożsamości', Params.name, Params.surname, Params.pesel],
+        [Params.reservationID, 'Weryfikacja tożsamości', Params.name, Params.surname, Params.pesel],
         lambda params: storage.reservations.get(int(params[0])).checkOut(params[2:])
     )
 
@@ -76,14 +76,14 @@ class Operations(Enum):
         'pay',
         'Zapłać',
         [Params.reservationID, Params.paymentMethods],
-        lambda params: storage.reservations.get(int(params[0])).markPaid(params[1])
+        lambda params: storage.reservations.get(int(params[0])).markPaid(params)
     )
     
     checkPaymentStatus = (
         'checkPaymentStatus',
         'Sprawdź status płatności rezerwacji',
         [Params.reservationID],
-        lambda params: storage.reservations.get(int(params[0])).checkPaymentStatus(params[0])
+        lambda params: storage.reservations.get(int(params[0])).checkPaymentStatus()
     )
 
     logout = (
