@@ -6,27 +6,28 @@ Standardy kodowania:
 - podział plików źródłowych na lokalizacje: classes, definitions, helpers
 - zmienne, funkcje, obiekty, instancje klas: camelCase
 - klasy, stałe, obiekty definiujące: PascalCase
+- UI po polsku
 
 Standardy dokumentowania:
 - jako komentarze inline w kodzie
 - komentarze po polsku
-- UI po polsku
 
 Język implementacji i IDE:
-- Python 3.9.6
-- Visual Studio 2019 
+- Python 3.9.6 (wymagana wersja 3.6+)
+- Visual Studio 2022 
 - wykorzystanie biblioteki Enum na potrzeby definiowania stałych
 Uzasadnienie:
-- Python jest jednym z języków najszybciej zdobywających popularność w ostatnim czasie.
+- Python jest jednym z języków najszybciej zdobywających popularność w ostatnich latach.
 - Jest warty nauczenia się. Głównie wykorzystywany do celów naukowych, m.in. AI.
 - Prosta syntaktyka w porównaniu do rodziny C.
-- Brak typowania.
+- Brak typowania zmiennych.
 - Niejawne przekazywanie wskaźników do funkcji/metod.
 - Rozbudowana ale łatwa obiektowość: konwersje typów, przeciążanie operatorów.
+- Zaawansowane funkcje języka: f-stringi, współdzielona pamięć procesu, funkcja sleep, anonimowe funkcje lambda.
 - Visual Studio 2022 jest darmowym środowikiem.
 - Platforma uniwersalna systemu Windows, systemy iOS i Android.
 - Umożliwia współpracę na kodem za pomoca usługi Git.
-- Łatwe połączone z aplikacją GitHub.
+- Łatwa integracja z aplikacją GitHub.
 
 Wykorzystanie repozytorium:
 - GitHub
@@ -40,7 +41,7 @@ Wykorzystanie repozytorium:
 Informacje o zaimplemetowanych testach jednostkowych:
 - Testy zostały zaimplementowane w celu sprawdzenia poprawności działania pojedynczych elementów kodu.
 - Testowana jest poprawność wprowadzanych danych podczas rezerwacji czy odpowiadają one założeniom technicznym.
-- Testowana jest poprawnośc wprowadzonych dat, czy nie wykraczają one poza zakres rzeczywistych.
+- Testowana jest poprawnośc wprowadzonych dat, czy nie wykraczają one poza zakres możliwych.
 
 TDD:
 - 
