@@ -62,8 +62,8 @@ def main():
             # zebranie niezbędnych parametrów operacji
             for i in range(n):
                 param = operation.params[i]
-                if str(param)[0]=='p':
-                    print(param[2:])
+                if type(param) == str:
+                    print(param)
                 else:
                     params[i] = input(param.text())
 
