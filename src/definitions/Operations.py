@@ -63,28 +63,28 @@ class Operations(Enum):
         'Zamelduj',
         [Params.reservationID,'Weryfikacja tożsamości', Params.name, Params.surname, Params.pesel],
         lambda params: storage.reservations.get(int(params[0])).accommodate(params[2:])
-        )
+    )
 
     checkOut = (
         'checkOut',
         'Wymelduj',
         [Params.reservationID,'Weryfikacja tożsamości', Params.name, Params.surname, Params.pesel],
         lambda params: storage.reservations.get(int(params[0])).checkOut(params[2:])
-        )
+    )
 
     pay = (
         'pay',
         'Zapłać',
         [Params.reservationID, Params.paymentMethods],
         lambda params: storage.reservations.get(int(params[0])).markPaid(params[1])
-        )
+    )
     
     checkPaymentStatus = (
         'checkPaymentStatus',
         'Sprawdź status płatności rezerwacji',
         [Params.reservationID],
         lambda params: storage.reservations.get(int(params[0])).checkPaymentStatus(params[0])
-        )
+    )
 
     logout = (
         'logout',
@@ -105,4 +105,4 @@ class Operations(Enum):
 
     # wyświetlenie pozycji w menu
     def getMenuOption(self):
-        return self.value + ': ' + self.description
+        return f'{self.value}: {self.description}'

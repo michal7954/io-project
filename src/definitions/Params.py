@@ -75,4 +75,4 @@ class Params(Enum):
 
     # wyświetlenie tekstowej zachęty
     def text(self):
-        return self.description + ': '
+        return f'{self.description}: '

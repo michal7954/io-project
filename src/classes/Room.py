@@ -19,7 +19,7 @@ class Room():
         # self.standard = str(params[3])
 
     def __str__(self):
-        return '#' + str(self.key) + ' Pokój numer ' + str(self.number) + ', miejsc ' + str(self.size) + ', koszt ' + str(self.costPerDay)
+        return f'#{self.key} Pokój numer {self.number}, miejsc {self.size}, koszt {self.costPerDay:.2f}'
 
     # czy pokój jest dostępny w zadanym przedziale czasowym
     def checkAvailability(self, start: Date, end: Date):

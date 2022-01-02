@@ -73,4 +73,4 @@ class Users(Enum):
 
     # wyświetlenie pozycji w menu
     def getMenuOption(self):
-        return self.value + ': ' + self.description
+        return f'{self.value}: {self.description}'

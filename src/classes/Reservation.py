@@ -29,7 +29,6 @@ class Reservation():
         # weryfikacja dostępności pokoju
         room = storage.rooms.get(self.roomKey)
         if not room.checkAvailability(self.start, self.end):
-            print(self.key)
             print('Pokój niedostępny w tym terminie')
             self.objectStatus = ObjectStatus.Forbidden
         else:
@@ -47,7 +46,7 @@ class Reservation():
        
 
     def __str__(self):
-        return '#' + str(self.key) + ' pokój #' + str(self.roomKey) + ', ' + str(self.start) + '-' + str(self.end) +  ', status ' + self.getAccomodationStatus() + ', dane gościa: ' + str(self.name) + ' '  + str(self.surname) + ', nr PESEL: ' + str(self.pesel) + ', nr telefonu: ' + str(self.phone)
+        return f'#{self.key} pokój #{self.roomKey}, {self.start}-{self.end}, status {self.getAccomodationStatus()}, dane gościa: {self.name} {self.surname}, PESEL: {self.pesel}, tel.: {self.phone}'
 
     def cancelReservation(self):
         self.accomodationStatus = AccomodationStatus.Canceled
@@ -105,7 +104,7 @@ class Reservation():
         number = numberOfDays(self.start,self.end)
         prize = room.costPerDay * number
 
-        print('Koszt pobytu wynosi: ', prize, ' zł')
+        print(f'Koszt pobytu wynosi: {prize:.2f} zł')
 
         # Możliwość odroczenia płatności, przy pobycie dłuższym niż 5 dni
         if number > 5:
@@ -120,14 +119,14 @@ class Reservation():
                     self.paymentStatus = PaymentStatus.Paid
                     print('...')
                     sleep(3)
-                    print('Zapłacono. Użyta metoda płatności: ', params)
+                    print(f'Zapłacono. Użyta metoda płatności: {params}')
                 else:
                     print('Błędnie wprowadzona odpowiedź. Podaj "TAK" lub "NIE".')
         else:
             self.paymentStatus = PaymentStatus.Paid
             print('...')
             sleep(3)
-            print('Zapłacono. Użyta metoda płatności: ', params)
+            print(f'Zapłacono. Użyta metoda płatności: {params}')
 
 
         

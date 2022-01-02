@@ -47,4 +47,4 @@ class Store():
 
     def listElements(self, _):
         for element in self.elements.values():
-            print(str(element))
+            print(element)

@@ -27,4 +27,4 @@ class Date:
         return int(self) >= int(other)
 
     def __str__(self):
-        return str(self.day) + '.' + str(self.month) + '.' + str(self.year)
+        return f'{self.day}.{self.month}.{self.year}'
