@@ -90,17 +90,18 @@ def correctSurname(s):
         return False
 
     # Jak w imieniu
-    if len(s) < 2:
-        return False
+    for i in range(len(surname)):
+        if len(s) < 2:
+            return False
 
-    if s.isalpha() == False:
-        return False
+        if s.isalpha() == False:
+            return False
 
-    if s[0].isupper() == False:
-        return False
+        if s[0].isupper() == False:
+            return False
 
-    if s[1:].islower() == False:
-        return False
+        if s[1:].islower() == False:
+            return False
 
     return True
 
@@ -165,6 +166,8 @@ def correctRoomNumber(s):
 
 # Poprawność wprowadzania rozmiaru pokoju - 1 lub 2 osobowe
 def correctRoomSize(s):
+    if not s.isdigit():
+        return False
     if int(s) == 1 or int(s) == 2 or int(s) == 3 or int(s) == 4 or int(s) == 5:
         return True
     return False
