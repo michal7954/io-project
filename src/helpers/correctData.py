@@ -91,16 +91,16 @@ def correctSurname(s):
 
     # Jak w imieniu
     for i in range(len(surname)):
-        if len(s) < 2:
+        if len(surname[i]) < 2:
             return False
 
-        if s.isalpha() == False:
+        if surname[i].isalpha() == False:
             return False
 
-        if s[0].isupper() == False:
+        if (surname[i])[0].isupper() == False:
             return False
 
-        if s[1:].islower() == False:
+        if (surname[i])[1:].islower() == False:
             return False
 
     return True
