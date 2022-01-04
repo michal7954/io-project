@@ -76,7 +76,7 @@ def listener():
                             else:
                                 break
 
-                        if match == 'reservationEnd':
+                        elif match == 'reservationEnd':
                             if correctDate(params[i]) == False:
                                 print('Błędnie wprowadzona data')
                             else:
