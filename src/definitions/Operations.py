@@ -17,13 +17,13 @@ class Operations(Enum):
     addRoom = (
         'addRoom',
         'Dodaj pokój',
-        [Params.roomNumber, Params.roomSize, Params.costPerDay],
+        [Params.roomNumber, Params.roomSize, Params.costPerDay, Params.standard],
         storage.rooms.add
     )
     modifyRoom = (
         'modifyRoom',
         'Zmodyfikuj pokój',
-        [Params.roomID, Params.roomNumber, Params.roomSize, Params.costPerDay],
+        [Params.roomID, Params.roomNumber, Params.roomSize, Params.costPerDay, Params.standard],
         storage.rooms.modify
     )
     removeRoom = (
@@ -71,7 +71,6 @@ class Operations(Enum):
         [Params.reservationID, 'Weryfikacja tożsamości', Params.name, Params.surname, Params.pesel],
         lambda params: storage.reservations.get(int(params[0])).checkOut(params[2:])
     )
-
     pay = (
         'pay',
         'Zapłać',

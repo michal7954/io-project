@@ -1,4 +1,6 @@
 import storage
+from helpers.correctData import *
+from classes.Date import Date
 
 
 def login():
@@ -62,13 +64,93 @@ def listener():
             if type(param) == str:
                 print(param)
             else:
-                params[i] = input(param.text())
+                while True:
+                        params[i] = input(param.text())
 
+                        # Obsługa błędów
+                        match = str(param)[7:]
+
+                        if match == 'reservationStart':
+                            if correctDate(params[i]) == False:
+                                print('Błędnie wprowadzona data')
+                            else:
+                                break
+
+                        elif match == 'reservationEnd':
+                            if correctDate(params[i]) == False:
+                                print('Błędnie wprowadzona data')
+                            else:
+                                a=(Date(params[i-1]))
+                                b=(Date(params[i]))
+                                if not a.__lt__(b):
+                                    print('Błędny przedział czasowy')
+                                else:
+                                    break
+
+                        elif match == 'name':
+                            if correctName(params[i]) == False:
+                                print('Błędnie wprowadzone imię')
+                            else:
+                                break
+
+                        elif match == 'surname':
+                            if correctSurname(params[i]) == False:
+                                print('Błędnie wprowadzone nazwisko')
+                            else:
+                                break
+
+                        elif match == 'pesel':
+                            if correctPesel(params[i]) == False:
+                                print('Błędnie wprowadzony numer PESEL')
+                            else:
+                                break
+
+                        elif match == 'phone':
+                            if correctPhone(params[i]) == False:
+                                print('Błędnie wprowadzony numer telefonu')
+                            else:
+                                break
+
+                        elif match == "roomNumber":
+                            if correctRoomNumber(params[i]) == False:
+                                print('Błędny numer pokoju')
+                            else:
+                                break
+
+                        elif match == "roomSize":
+                            if correctRoomSize(params[i]) == False:
+                                print('Błędny rozmiar pokoju')
+                            else:
+                                break
+
+                        elif match == "costPerDay":
+                            if correctCostPerDay(params[i]) == False:
+                                print('Błędnie wprowadzony koszt pobytu')
+                            else:
+                                break
+
+                        elif match == "roomID":
+                            if correctRoomID(params[i]) == False:
+                                print('Błędne ID')
+                            else:
+                                break
+
+                        elif match == "reservationID":
+                            if correctReservationID(params[i]) == False:
+                                print('Błędne ID')
+                            else:
+                                break
+                        elif match == "paymentMethods":
+                            if correctPaymentMethod(params[i]) == False:
+                                print('Niepoprawna metoda płatności')
+                            else:
+                                break
+
+                        elif match =="standard":
+                            if correctStandard(params[i])==False:
+                                print('Niepoprawny standard')
+                            else:
+                                break
+                        
+                        else: break
         operation.run(params)
-
-        # todo zaawansowana weryfikacja i obsługa błędów
-        # try:
-        #     operation.run(params)
-        # except Exception as e:
-        #     print('Wystąpił problem')
-        #     print(e)
