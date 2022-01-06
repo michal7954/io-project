@@ -30,11 +30,7 @@ def correctDate(s):
         return False
 
     # Czy są liczbami
-    if not date[0].isdigit():
-        return False
-    if not date[1].isdigit():
-        return False
-    if not date[2].isdigit():
+    if not date[0].isdigit() or not date[1].isdigit() or not date[2].isdigit():
         return False
 
     # Czy poprawna długość członów
@@ -59,6 +55,7 @@ def correctDate(s):
         return False
 
     return True
+
 
 
 # Poprawność wprowadzanego imienia
@@ -89,18 +86,9 @@ def correctSurname(s):
     if len(surname) != 2 and len(surname) != 1:
         return False
 
-    # Jak w imieniu
+    # Korzysta z imienia
     for i in range(len(surname)):
-        if len(surname[i]) < 2:
-            return False
-
-        if surname[i].isalpha() == False:
-            return False
-
-        if (surname[i])[0].isupper() == False:
-            return False
-
-        if (surname[i])[1:].islower() == False:
+       if correctName(surname[i]) == False:
             return False
 
     return True
@@ -109,11 +97,9 @@ def correctSurname(s):
 # Poprawność wprowadzanego peselu
 def correctPesel(s):
     # Czy poprawna długość i czy składa się z cyfr
-    if len(s) != 11:
+    if len(s) != 11 or s.isdigit()==False:
         return False
-    if not s.isdigit():
-        return False
-
+   
     return True
 
 
@@ -164,11 +150,11 @@ def correctRoomNumber(s):
     return False
 
 
-# Poprawność wprowadzania rozmiaru pokoju - 1 lub 2 osobowe
+# Poprawność wprowadzania rozmiaru pokoju - max 5 osobowe
 def correctRoomSize(s):
     if not s.isdigit():
         return False
-    if int(s) == 1 or int(s) == 2 or int(s) == 3 or int(s) == 4 or int(s) == 5:
+    if int(s)>0 and int(s)<6:
         return True
     return False
 
