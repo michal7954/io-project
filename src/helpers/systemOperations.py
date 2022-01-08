@@ -68,7 +68,7 @@ def listener():
                         params[i] = input(param.text())
                        
                         if not param.isCorrect(params[i]):
-                            print(param.errorComment)
+                            continue
                         elif str(param)[7:] == 'reservationEnd':
                                  if not Date(params[i-1]).__lt__(Date(params[i])):
                                     print('Błędny przedział czasowy')
