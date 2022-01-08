@@ -18,6 +18,7 @@ class Users(Enum):
         'user',
         'Potencjalny gość hotelu',
         [
+            Operations.listRooms,
             Operations.addReservation,
             Operations.cancelReservation,
             Operations.logout

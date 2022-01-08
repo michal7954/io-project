@@ -1,72 +1,86 @@
 from enum import Enum
-
+from helpers.correctData import * 
 
 class Params(Enum):
     # definicje wszystkich możliwych parametrów podawanych przez użytkownika w aplikacji
 
     # przykładowy parametr = (
     #     identyfikator parametru: 'przykładowy parametr',
-    #     opis parametru
+    #     opis parametru,
+    #     funkcja sprawdzająca poprawność parametru
     # )
 
     roomID = (
         'roomID',
-        'Podaj #ID pokoju'
+        'Podaj #ID pokoju',
+        correctRoomID,
     )
     roomNumber = (
         'roomNumber',
         'Podaj numer pokoju',
+        correctRoomNumber,
     )
     roomSize = (
         'roomSize',
-        'Podaj rozmiar pokoju',
+        'Podaj rozmiar pokoju - maksymalnie 5 osobowy',
+        correctRoomSize,
     )
     costPerDay = (
         'costPerDay',
-        'Podaj cenę za jedną noc wynajęcia pokoju (np. 49.99)'
+        'Podaj cenę za jedną noc wynajęcia pokoju (np. 49.99)',
+        correctCostPerDay,
     )
 
     standard = (
         'standard',
-        'Podaj standard pokoju (*, **, lub ***)'
+        'Podaj standard pokoju (*, **, lub ***)',
+        correctStandard,
      )
 
     reservationID = (
         'reservationID',
-        'Podaj #ID rezerwacji'
+        'Podaj #ID rezerwacji',
+        correctReservationID,
     )
     reservationStart = (
         'reservationStart',
-        'Podaj datę początku rezerwacji [DD.MM.RRRR]'
+        'Podaj datę początku rezerwacji [DD.MM.RRRR]',
+        correctDate,
     )
     reservationEnd = (
         'reservationEnd',
-        'Podaj datę końca rezerwacji [DD.MM.RRRR]'
+        'Podaj datę końca rezerwacji [DD.MM.RRRR]',
+        correctDate,
     )
 
     name = (
         'name',
-        'Podaj imię'
+        'Podaj imię',
+        correctName,
     )
 
     surname = (
         'surname',
-        'Podaj nazwisko'
+        'Podaj nazwisko',
+        correctSurname,
     )
 
     pesel = (
         'pesel',
-        'Podaj numer PESEL'
+        'Podaj numer PESEL',
+        correctPesel,
     )
 
     phone = (
         'phone',
-        'Podaj numer telefonu'
+        'Podaj numer telefonu',
+        correctPhone,
     )
 
     paymentMethods = (
         'paymentMethod',
-        'Wybierz metodę płatności [gotówka, karta, telefon, BLIK]'
+        'Wybierz metodę płatności [gotówka, karta, telefon, BLIK]',
+        correctPaymentMethod,
         )
 
 
@@ -75,8 +89,9 @@ class Params(Enum):
         obj._value_ = args[0]
         return obj
 
-    def __init__(self, _, description):
+    def __init__(self, _, description, isCorrect):
         self.description = description
+        self.isCorrect = isCorrect
 
     # wyświetlenie tekstowej zachęty
     def text(self):
