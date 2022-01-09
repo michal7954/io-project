@@ -99,22 +99,22 @@ class TestReservation(unittest.TestCase):
     def test_10(self):
         reservation = Reservation(
             101,
-            [3, '3.1.2022', '9.1.2022','Adam','Kowal','12345678910','123456789']
+            [3, '3.1.2022', '4.1.2022','Adam','Kowal','12345678910','123456789']
         )
-        reservation.markPaid([3,'BLIK'])
+        reservation.markPaid([3, 'BLIK'])
         self.assertEqual(reservation.objectStatus, ObjectStatus.Ok)
         self.assertEqual(reservation.paymentStatus, PaymentStatus.Paid,
                          'Błąd oznaczania rezerwacji opłaconej')
 
-    # def test_11(self):
-    #     reservation = Reservation(
-    #         101,
-    #         [3, '3.1.2022', '9.1.2022','Adam','Kowal','12345678910','123456789']
-    #     )
-    #     reservation.setDeferred()
-    #     self.assertEqual(reservation.objectStatus, ObjectStatus.Ok)
-    #     self.assertEqual(reservation.paymentStatus, PaymentStatus.Deferred,
-    #                      'Błąd oznaczania rezerwacji odroczonej')
+    def test_11(self):
+        reservation = Reservation(
+            101,
+            [3, '3.1.2022', '5.1.2022','Adam','Kowal','12345678910','123456789']
+        )
+        reservation.markPaid([3, 'gotówka'])
+        self.assertEqual(reservation.objectStatus, ObjectStatus.Ok)
+        self.assertEqual(reservation.paymentStatus, PaymentStatus.Paid,
+                         'Błąd oznaczania rezerwacji opłaconej')
                         
     def test_12(self):
         reservation = Reservation(
