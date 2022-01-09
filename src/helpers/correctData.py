@@ -27,29 +27,31 @@ def correctDate(s):
     # Data rodzdzielana '.'
     date = s.split('.')
 
+    errorTextPrefix = '\tBłędnie wprowadzona data\n\t'
+
     # Czy data ma 3 człony
     if len(date) != 3:
-        print("\tBłędnie wprowadzona data\n\tData musi zostać wprowadzona w formacie [[dzień].[miesiąc].[rok]]")
+        print(f'{errorTextPrefix}Data musi zostać wprowadzona w formacie [dzień.miesiąc.rok]')
         return False
 
     # Czy są liczbami
     if not date[0].isdigit() or not date[1].isdigit() or not date[2].isdigit():
-        print(f'\tBłędnie wprowadzona data\n\tDzień, miesiąc i rok muszą byś podane jako liczby')
+        print(f'{errorTextPrefix}Dzień, miesiąc i rok muszą być podane jako liczby')
         return False
 
     # Czy poprawna długość członów
     if len(date[0]) < 0 or len(date[0]) > 2 or len(date[1]) < 0 or len(date[1]) > 2 or len(date[2]) != 4:
-        print('\tBłędnie wprowadzona data\n\tDzień, miesiąc muszą byś podane jako liczby jedno lub dwucyfrowe, a rok jako liczba czterocyfrowa')
+        print(f'{errorTextPrefix}Dzień, miesiąc muszą być podane jako liczby jedno lub dwucyfrowe, a rok jako liczba czterocyfrowa')
         return False
 
     # Rok między 2022 a 2030
     if int(date[2]) < 2022 or int(date[2]) > 2030:
-        print('\tBłędnie wprowadzona data\n\tRok musi byś podany z przedziału 2022-2030.')
+        print(f'{errorTextPrefix}Rok musi być podany z przedziału 2022-2030.')
         return False
 
     # Czy poprawnie wprowadzony miesiąc
     if int(date[1]) > 12 or int(date[1]) < 1:
-        print('\tBłędnie wprowadzona data\n\tMiesiąc musi byś podane z przedziału 1-12.')
+        print(f'{errorTextPrefix}Miesiąc musi być z przedziału 1-12.')
         return False
 
     # Przypadek roku przestępnego
@@ -59,7 +61,7 @@ def correctDate(s):
     # Czy liczba dni zgadza się z liczbą dni danego miesiąca
     T = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     if int(date[0]) < 1 or int(date[0]) > T[int(date[1]) - 1]:
-        print('\tBłędnie wprowadzona data\n\tPodany dzień jest nieprawidłowy.')
+        print(f'{errorTextPrefix}Podany dzień jest nieprawidłowy.')
         return False
 
     return True
@@ -68,25 +70,27 @@ def correctDate(s):
 
 
 # Poprawność wprowadzanego imienia
-def correctName(s, name='imię'):
+def correctName(s, paramName='imię'):
+    errorTextPrefix = f'\tBłędnie wprowadzone {paramName}\n\t'
+
     # Czy dłuższe niż 2
     if len(s) < 2:
-        print(f'\tBłędnie wprowadzone {name}\n\t{name} musi zawierać więcej niż 2 litery')
+        print(f'{errorTextPrefix}{paramName} musi zawierać więcej niż 2 litery')
         return False
 
     # Czy składa się z liter
     if s.isalpha() == False:
-        print(f'\tBłędnie wprowadzone {name}\n\t{name} musi zawiarać wyłącznie litery')
+        print(f'{errorTextPrefix}{paramName} musi zawiarać wyłącznie litery')
         return False
 
     # Czy pierwsza litera jest wielka
     if s[0].isupper() == False:
-        print(f'\tBłędnie wprowadzone {name}\n\tPierwsza litera musi być wielka')
+        print(f'{errorTextPrefix}Pierwsza litera musi być wielka')
         return False
 
     # Czy reszta liter jest mała
     if s[1:].islower() == False:
-        print(f'\tBłędnie wprowadzone {name}\n\tTylko pierwsza litera może być wielka.')
+        print(f'{errorTextPrefix}Tylko pierwsza litera może być wielka.')
         return False
 
     return True
@@ -98,7 +102,7 @@ def correctSurname(s):
     # Rozdzielenie dwuczłonowego nazwiska
     surname = s.split('-')
     if len(surname) != 2 and len(surname) != 1:
-        print('\tBłędnie wprowadzone nazwisko\n\t Nazwisko musi byś jednoczłonowe lub dwuczłonowe oddzielone znakim '-'')
+        print('\tBłędnie wprowadzone nazwisko\n\t Nazwisko musi być jednoczłonowe lub dwuczłonowe oddzielone znakim '-'')
         return False
 
     # Korzysta z imienia
@@ -128,15 +132,17 @@ def correctPhone(s):
     if len(s) == 9 and s.isdigit():
         return True
 
+    errorTextPrefix = '\tBłędnie wprowadzony numer telefonu\n\t'
+
     # Wariant 2 - tylko rozdzielenie '-'
     phone = s.split('-')
     if len(phone) != 1:
         if len(phone) != 3:
-            print('\tBłędnie wprowadzony numer telefonu\n\tZnak '-' musi rodzielać po 3 cyfry [123-456-789]')
+            print(f'{errorTextPrefix}Znak '-' musi rodzielać po 3 cyfry [123-456-789]')
             return False
         for i in range(3):
             if len(phone[i]) != 3 or phone[i].isdigit() == False:
-                print('\tBłędnie wprowadzony numer telefonu\n\tZnak '-' musi rodzielać po 3 cyfry [123-456-789]')
+                print(f'{errorTextPrefix}Znak '-' musi rodzielać po 3 cyfry [123-456-789]')
                 return False
         return True
 
@@ -145,7 +151,7 @@ def correctPhone(s):
     if len(phone) == 3:
         for i in range(3):
             if len(phone[i]) != 3 or phone[i].isdigit() == False:
-                print('\tBłędnie wprowadzony numer telefonu\n\tZnak spacja musi rodzielać cyfry w jeden z podanych sposobów [123 456 789] lub [12 34 567 89]')
+                print(f'{errorTextPrefix}Znak spacja musi rodzielać cyfry w jeden z podanych sposobów [123 456 789, 12 34 567 89]')
                 return False
         return True
 
@@ -153,25 +159,27 @@ def correctPhone(s):
         for i in range(4):
             if i == 2:
                 if len(phone[i]) != 3 or phone[i].isdigit() == False:
-                    print('\tBłędnie wprowadzony numer telefonu\n\tZnak spacja musi rodzielać cyfry w jeden z podanych sposobów [123 456 789] lub [12 34 567 89]')
+                    print(f'{errorTextPrefix}Znak spacja musi rodzielać cyfry w jeden z podanych sposobów [123 456 789, 12 34 567 89]')
                     return False
             else:
                 if len(phone[i]) != 2 or phone[i].isdigit() == False:
-                    print('\tBłędnie wprowadzony numer telefonu\n\tZnak spacja musi rodzielać cyfry w jeden z podanych sposobów [123 456 789] lub [12 34 567 89]')
+                    print(f'{errorTextPrefix}Znak spacja musi rodzielać cyfry w jeden z podanych sposobów [123 456 789, 12 34 567 89]')
                     return False
         return True
-    print('\tBłędnie wprowadzony numer telefonu\n\tNumer musi zostać w wprowadzony w jeden z podanych sposobów [123456789] lub [123-456-789] lub [123 456 789] lub [12 34 567 89]')
+    print(f'{errorTextPrefix}Numer musi zostać w wprowadzony w jeden z podanych sposobów [123456789, 123-456-789, 123 456 789, 12 34 567 89]')
     return False
 
 
 
 # Poprawność wprowadzania numeru pokoju
 def correctRoomNumber(s):
+    errorTextPrefix = 'Błędnie wprowadzony numer pokoju\n\t'
+
     if not s.isdigit():
-        print('Błędnie wprowadzony numer pokoju\n\tNumer musi być liczbą')
+        print(f'{errorTextPrefix}Numer musi być liczbą')
         return False
     if len(s) > 3 or len(s) == 0 or int(s) <= 0:
-        print('Błędnie wprowadzony numer pokoju\n\tNumer musi być liczbą z przedziału 1-999')
+        print(f'{errorTextPrefix}Numer musi być liczbą z przedziału 1-999')
         return False
     return True
 
@@ -179,12 +187,14 @@ def correctRoomNumber(s):
 
 # Poprawność wprowadzania rozmiaru pokoju - max 5 osobowe
 def correctRoomSize(s):
+    errorTextPrefix = 'Błędnie wprowadzony rozmiar pokoju\n\t'
+
     if not s.isdigit():
-        print('Błędnie wprowadzony rozmiar pokoju\n\tRozmiar musi być cyfrą')
+        print(f'{errorTextPrefix}Rozmiar musi być cyfrą')
         return False
     if int(s) > 0 and int(s) < 6:
         return True
-    print('\tBłędnie wprowadzony rozmiar pokoju\n\tRozmiar musi być cyfrą z przedziału 1-5.')
+    print(f'{errorTextPrefix}Rozmiar musi być cyfrą z przedziału 1-5')
     return False
 
 
@@ -207,36 +217,42 @@ def correctPaymentMethod(s):
 
 
 def correctStandard(s):
+    errorText = '\tBłędnie wprowadzony standard pokoju\n\tDostępne standardy: [*, **, ***]'
+
     if len(s) < 1 or len(s) > 3:
-        print('\tBłędnie wprowadzony standard pokoju\n\tDostępne standardy: [*, **, ***]')
+        print(errorText)
         return False
 
     for i in range(len(s)):
         if s[i] != '*':
-            print('\tBłędnie wprowadzony standard pokoju\n\tDostępne standardy: [*, **, ***]')
+            print(errorText)
             return False
     return True
 
 
 
 def correctRoomID(s):
+    errorTextPrefix = '\tBłędnie wprowadzone ID pokoju\n\t'
+
     if not s.isdigit():
-        print('\tBłędnie wprowadzone ID pokoju\n\tID pokoju musi byś liczbą')
+        print(f'{errorTextPrefix}ID pokoju musi być liczbą')
         return False
     for element in storage.rooms.elements.values():
         if (int(element.key) == int(s)):
             return True
-    print('\tBłędnie wprowadzone ID pokoju\n\tBrak pokoju o podanym ID w bazie')
+    print(f'{errorTextPrefix}Brak pokoju o podanym ID w bazie')
     return False
 
 
 def correctReservationID(s):
+    errorTextPrefix = '\tBłędnie wprowadzone ID rezerwacji\n\t'
+
     if not s.isdigit():
-        print('\tBłędnie wprowadzone ID rezerwacji\n\tID rezerwacji musi byś liczbą')
+        print(f'{errorTextPrefix}ID rezerwacji musi być liczbą')
         return False
     for element in storage.reservations.elements.values():
         if (int(element.key) == int(s)):
             return True
-    print('\tBłednie wprowadzone ID rezerwacji.\n\tBrak rezerwacji o podanym ID w bazie')
+    print(f'{errorTextPrefix}Brak rezerwacji o podanym ID w bazie')
     return False
 
