@@ -62,7 +62,7 @@ class Users(Enum):
             Operations.logout
         ],
     )
-  
+
     def __new__(cls, *args, **kwds):
         obj = object.__new__(cls)
         obj._value_ = args[0]

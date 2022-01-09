@@ -9,7 +9,6 @@ from helpers.correctData import correctReservation
 from time import sleep
 
 
-
 class Reservation():
     # params = [roomKey, startString, endString]
     def __init__(self, key, params):
@@ -48,7 +47,6 @@ class Reservation():
             return 'zakwaterowanie'
         elif self.accomodationStatus == AccomodationStatus.Ended:
             return 'zakończona'
-       
 
     def __str__(self):
         return f'#{self.key} pokój #{self.roomKey}, {self.start}-{self.end}, status {self.getAccomodationStatus()}, dane gościa: {self.name} {self.surname}, PESEL: {self.pesel}, tel.: {self.phone}'
@@ -56,10 +54,9 @@ class Reservation():
     def cancelReservation(self):
         self.accomodationStatus = AccomodationStatus.Canceled
 
-
-    def accommodate(self,params):
+    def accommodate(self, params):
         # Sprawdzamy czy dane wprowadzone przy rezerwacji zgadają się z tymi podanymi przy zameldowaniu
-        if params[0]==self.name and params[1]==self.surname and params[2]==self.pesel:
+        if params[0] == self.name and params[1] == self.surname and params[2] == self.pesel:
             self.accomodationStatus = AccomodationStatus.Accommodated
             print('Zameldowano')
         else:
@@ -67,47 +64,47 @@ class Reservation():
 
     # Wymeldowanie
     def checkOut(self, params):
-        if params[0]==self.name and params[1]==self.surname and params[2]==self.pesel:
-            if  self.paymentStatus == PaymentStatus.Paid:
-                 self.accomodationStatus = AccomodationStatus.Ended
-                 print('Wymeldowano. Dziękujemy za pobyt')
+        if params[0] == self.name and params[1] == self.surname and params[2] == self.pesel:
+            if self.paymentStatus == PaymentStatus.Paid:
+                self.accomodationStatus = AccomodationStatus.Ended
+                print('Wymeldowano. Dziękujemy za pobyt')
             else:
-               print('Musisz dokonać płatności')
+                print('Musisz dokonać płatności')
         else:
             print('Tożsamość nie została potwierdzona')
 
     # Sprawdzenie statusu płatności podanej rezerwacji (opłacona,odroczona,niepołacona)
     def checkPaymentStatus(self):
-        if  self.paymentStatus == PaymentStatus.Paid:
+        if self.paymentStatus == PaymentStatus.Paid:
             print('Rezerwacja opłacona')
-        if  self.paymentStatus == PaymentStatus.Deferred:
+        if self.paymentStatus == PaymentStatus.Deferred:
             print('Płatność odrocznona')
-        if  self.paymentStatus == PaymentStatus.Unpaid:
+        if self.paymentStatus == PaymentStatus.Unpaid:
             print('Rezerwacja nieopłacona')
-            
+
     # Realizacja płatności i zmiana statusu
     def markPaid(self, params):
         if self.accomodationStatus == AccomodationStatus.Canceled or self.accomodationStatus == AccomodationStatus.Ended:
             print('Rezerwacja nieaktualna')
             return
-        if  self.paymentStatus == PaymentStatus.Paid:
+        if self.paymentStatus == PaymentStatus.Paid:
             print('Rezerwacja opłacona')
             return
 
         # Zapisanie metody płatności
         method = params[1]
-        if method=='gotówka':
+        if method == 'gotówka':
             self.paymentMethod = PaymentMethod.Cash
-        if method=='karta':
+        if method == 'karta':
             self.paymentMethod = PaymentMethod.Card
-        if method=='telefon':
+        if method == 'telefon':
             self.paymentMethod = PaymentMethod.Phone
-        if method=='BLIK':
+        if method == 'BLIK':
             self.paymentMethod = PaymentMethod.Blik
-        
-        # Obliczanie ceny pobytu 
+
+        # Obliczanie ceny pobytu
         room = storage.rooms.get(self.roomKey)
-        number = numberOfDays(self.start,self.end)
+        number = numberOfDays(self.start, self.end)
         prize = room.costPerDay * number
 
         print(f'Koszt pobytu wynosi: {prize:.2f} zł')
@@ -115,8 +112,8 @@ class Reservation():
         # Możliwość odroczenia płatności, przy pobycie dłuższym niż 5 dni
         if number > 5:
             print('Pobyt wynosi więcej niż 5 dni. Płatność może zostać zrealizowana podczas wymeldowania.')
-            answer=''
-            while answer!='TAK' and answer!='NIE':
+            answer = ''
+            while answer != 'TAK' and answer != 'NIE':
                 answer = input('Czy chcesz odroczyć płatność? [TAK, NIE]: ')
                 if answer == 'TAK':
                     self.paymentStatus = PaymentStatus.Deferred
@@ -133,9 +130,3 @@ class Reservation():
             print('...')
             sleep(3)
             print(f'Zapłacono. Użyta metoda płatności: {method}')
-
-
-        
-   
-
-            

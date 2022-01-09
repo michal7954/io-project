@@ -67,8 +67,6 @@ def correctDate(s):
     return True
 
 
-
-
 # Poprawność wprowadzanego imienia
 def correctName(s, paramName='imię'):
     errorTextPrefix = f'\tBłędnie wprowadzone {paramName}\n\t'
@@ -96,7 +94,6 @@ def correctName(s, paramName='imię'):
     return True
 
 
-
 # Poprawność wprowadzanego nazwiska
 def correctSurname(s):
     # Rozdzielenie dwuczłonowego nazwiska
@@ -107,11 +104,10 @@ def correctSurname(s):
 
     # Korzysta z imienia
     for i in range(len(surname)):
-        if correctName(surname[i],'nazwisko') == False:
+        if correctName(surname[i], 'nazwisko') == False:
             return False
 
     return True
-
 
 
 # Poprawność wprowadzanego peselu
@@ -122,7 +118,6 @@ def correctPesel(s):
         return False
 
     return True
-
 
 
 # Poprawność wprowadzanego numeru telefonu
@@ -138,11 +133,11 @@ def correctPhone(s):
     phone = s.split('-')
     if len(phone) != 1:
         if len(phone) != 3:
-            print(f'{errorTextPrefix}Znak '-' musi rodzielać po 3 cyfry [123-456-789]')
+            print(f'{errorTextPrefix}Znak - musi rodzielać po 3 cyfry [123-456-789]')
             return False
         for i in range(3):
             if len(phone[i]) != 3 or phone[i].isdigit() == False:
-                print(f'{errorTextPrefix}Znak '-' musi rodzielać po 3 cyfry [123-456-789]')
+                print(f'{errorTextPrefix}Znak - musi rodzielać po 3 cyfry [123-456-789]')
                 return False
         return True
 
@@ -170,7 +165,6 @@ def correctPhone(s):
     return False
 
 
-
 # Poprawność wprowadzania numeru pokoju
 def correctRoomNumber(s):
     errorTextPrefix = 'Błędnie wprowadzony numer pokoju\n\t'
@@ -184,7 +178,6 @@ def correctRoomNumber(s):
     return True
 
 
-
 # Poprawność wprowadzania rozmiaru pokoju - max 5 osobowe
 def correctRoomSize(s):
     errorTextPrefix = 'Błędnie wprowadzony rozmiar pokoju\n\t'
@@ -196,7 +189,6 @@ def correctRoomSize(s):
         return True
     print(f'{errorTextPrefix}Rozmiar musi być cyfrą z przedziału 1-5')
     return False
-
 
 
 # Poprawność wprowadzania kosztu - np. 13.00
@@ -230,7 +222,6 @@ def correctStandard(s):
     return True
 
 
-
 def correctRoomID(s):
     errorTextPrefix = '\tBłędnie wprowadzone ID pokoju\n\t'
 
@@ -253,4 +244,3 @@ def correctReservationID(s):
         return True
     print(f'{errorTextPrefix}Brak rezerwacji o podanym ID w bazie')
     return False
-

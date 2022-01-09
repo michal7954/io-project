@@ -1,5 +1,6 @@
 from enum import Enum
-from helpers.correctData import * 
+from helpers.correctData import *
+
 
 class Params(Enum):
     # definicje wszystkich możliwych parametrów podawanych przez użytkownika w aplikacji
@@ -35,7 +36,7 @@ class Params(Enum):
         'standard',
         'Podaj standard pokoju (*, **, lub ***)',
         correctStandard,
-     )
+    )
 
     reservationID = (
         'reservationID',
@@ -81,8 +82,7 @@ class Params(Enum):
         'paymentMethod',
         'Wybierz metodę płatności [gotówka, karta, telefon, BLIK]',
         correctPaymentMethod,
-        )
-
+    )
 
     def __new__(cls, *args, **kwds):
         obj = object.__new__(cls)

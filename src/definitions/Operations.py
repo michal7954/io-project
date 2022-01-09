@@ -77,7 +77,7 @@ class Operations(Enum):
         [Params.reservationID, Params.paymentMethods],
         lambda params: storage.reservations.get(int(params[0])).markPaid(params)
     )
-    
+
     checkPaymentStatus = (
         'checkPaymentStatus',
         'Sprawdź status płatności rezerwacji',
@@ -91,7 +91,7 @@ class Operations(Enum):
         [],
         logout
     )
-  
+
     def __new__(cls, *args, **kwds):
         obj = object.__new__(cls)
         obj._value_ = args[0]
