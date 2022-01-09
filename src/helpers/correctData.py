@@ -237,9 +237,8 @@ def correctRoomID(s):
     if not s.isdigit():
         print(f'{errorTextPrefix}ID pokoju musi być liczbą')
         return False
-    for element in storage.rooms.elements.values():
-        if (int(element.key) == int(s)):
-            return True
+    if storage.rooms.hasattr(int(s)):
+        return True
     print(f'{errorTextPrefix}Brak pokoju o podanym ID w bazie')
     return False
 
@@ -250,9 +249,8 @@ def correctReservationID(s):
     if not s.isdigit():
         print(f'{errorTextPrefix}ID rezerwacji musi być liczbą')
         return False
-    for element in storage.reservations.elements.values():
-        if (int(element.key) == int(s)):
-            return True
+    if storage.reservations.hasattr(int(s)):
+        return True
     print(f'{errorTextPrefix}Brak rezerwacji o podanym ID w bazie')
     return False
 
