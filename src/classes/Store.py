@@ -48,3 +48,6 @@ class Store():
     def listElements(self, _):
         for element in self.elements.values():
             print(element)
+
+    def hasattr(self, key):
+        return key in self.elements
