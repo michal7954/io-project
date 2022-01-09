@@ -101,7 +101,7 @@ class TestReservation(unittest.TestCase):
             101,
             [3, '3.1.2022', '9.1.2022','Adam','Kowal','12345678910','123456789']
         )
-        reservation.markPaid([3,"BLIK"])
+        reservation.markPaid([3,'BLIK'])
         self.assertEqual(reservation.objectStatus, ObjectStatus.Ok)
         self.assertEqual(reservation.paymentStatus, PaymentStatus.Paid,
                          'Błąd oznaczania rezerwacji opłaconej')

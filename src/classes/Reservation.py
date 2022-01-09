@@ -117,7 +117,7 @@ class Reservation():
             print('Pobyt wynosi więcej niż 5 dni. Płatność może zostać zrealizowana podczas wymeldowania.')
             answer=''
             while answer!='TAK' and answer!='NIE':
-                answer = input('Czy chcesz odroczyć płatność? [TAK,NIE]: ')
+                answer = input('Czy chcesz odroczyć płatność? [TAK, NIE]: ')
                 if answer == 'TAK':
                     self.paymentStatus = PaymentStatus.Deferred
                     print('Płatność odroczona')
@@ -127,7 +127,7 @@ class Reservation():
                     sleep(3)
                     print(f'Zapłacono. Użyta metoda płatności: {method}')
                 else:
-                    print('Błędnie wprowadzona odpowiedź. Podaj "TAK" lub "NIE".')
+                    print('Błędnie wprowadzona odpowiedź. Podaj [TAK, NIE]')
         else:
             self.paymentStatus = PaymentStatus.Paid
             print('...')
