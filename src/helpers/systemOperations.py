@@ -1,6 +1,4 @@
 import storage
-from helpers.correctData import *
-from classes.Date import Date
 
 
 def login():
@@ -56,26 +54,19 @@ def listener():
             continue
 
         n = len(operation.params)
-        params = [None for _ in range(n)]
+        inputParams = [None for _ in range(n)]
 
         # zebranie niezbędnych parametrów operacji
         for i in range(n):
             param = operation.params[i]
             if type(param) == str:
+                # wyświetl tekst pomocniczy
                 print(param)
             else:
+                # wczytuj parametr dopóki nie ma poprawnego formatu
                 while True:
-                        params[i] = input(param.text())
-                       
-                        if not param.isCorrect(params[i]):
-                            continue
-                        elif str(param)[7:] == 'reservationEnd':
-                                 if not Date(params[i-1]).__lt__(Date(params[i])):
-                                    print('Błędny przedział czasowy')
-                                 else:
-                                    break
-                        else:
-                             break 
-                        
+                    inputParams[i] = input(param.text())
+                    if param.isCorrect(inputParams[i]):
+                        break
 
-        operation.run(params)
+        operation.run(inputParams)

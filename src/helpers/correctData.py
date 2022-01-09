@@ -11,12 +11,14 @@ def correctRoom(params):
 
 def correctReservation(params):
     if correctRoomID(str(params[0])) and correctDate((params[1])) and correctDate((params[2])) and correctName(str(params[3])) and correctSurname(str(params[4])) and correctPesel(str(params[5])) and correctPhone(str(params[6])):
-        start=params[1].split('.')
-        end = params[2].split('.')
-        a=int(start[0])+int(start[1])*100+int(start[2])*10000
-        b = int(end[0]) + int(end[1]) * 100 + int(end[2]) * 10000
-        if b>a:
+        from classes.Date import Date
+        start = Date(params[1])
+        end = Date(params[2])
+        if start < end:
             return True
+        else:
+            print('\tNiepoprawny okres rezerwacji\n\tWprowadź rezerwację jeszcze raz')
+
     return False
 
 
