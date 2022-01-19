@@ -85,6 +85,47 @@ class Operations(Enum):
         lambda params: storage.reservations.get(int(params[0])).checkPaymentStatus()
     )
 
+    tide = (
+        'tide',
+        'Zamów sprzątanie pokoju',
+        ['t:tide',Params.reservationID, Params.description, Params.time],
+        storage.services.add
+    )
+
+    breakfast = (
+        'breakfast',
+        'Zamów śniadanie do pokoju',
+        ['t:breakfast',Params.reservationID, Params.description, Params.time],
+        storage.services.add
+    )
+
+    conservator = (
+        'conservator',
+        'Zamów konserwatora',
+        ['t:conservator',Params.reservationID, Params.description, Params.time],
+        storage.services.add
+    )
+
+    listServices = (
+        'listServices',
+        'Wyświetl listę usług',
+        [],
+        storage.services.listElements
+        )
+
+    availableRooms=(
+        'availableRooms',
+        'Wyświetl pokoje dostępne w zadanym terminie',
+        [Params.reservationStart, Params.reservationEnd],
+        storage.rooms.availableRooms
+    )
+    markCompletion=(
+        'markCompletion',
+        'Oznacz usługę jako wykonaną',
+        [Params.serviceID],
+        lambda params: storage.services.get(int(params[0])).markCompletion()
+        )
+
     logout = (
         'logout',
         'Wyloguj i wybierz nowego użytkownika',

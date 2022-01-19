@@ -21,6 +21,7 @@ class Users(Enum):
             Operations.listRooms,
             Operations.addReservation,
             Operations.cancelReservation,
+            Operations.availableRooms,
             Operations.logout
         ],
     )
@@ -30,6 +31,9 @@ class Users(Enum):
         'Gość hotelu',
         [
             Operations.checkPaymentStatus,
+            Operations.tide,
+            Operations.breakfast,
+            Operations.conservator,
             Operations.logout
         ],
     )
@@ -46,6 +50,9 @@ class Users(Enum):
             Operations.checkOut,
             Operations.pay,
             Operations.checkPaymentStatus,
+            Operations.listServices,
+            Operations.availableRooms,
+            Operations.markCompletion,
             Operations.logout
         ],
     )

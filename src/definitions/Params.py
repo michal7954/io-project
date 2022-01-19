@@ -84,6 +84,26 @@ class Params(Enum):
         correctPaymentMethod,
     )
 
+    description = (
+        'description',
+        'Podaj opis usługi',
+        correctString,
+    )
+   
+    time = (
+        'time',
+        'Podaj datę i godzinę',
+        correctDateHour,
+    )
+
+    serviceID = (
+        'serviceID',
+        'Podaj ID usługi',
+        correctServiceID,
+        )
+
+    
+
     def __new__(cls, *args, **kwds):
         obj = object.__new__(cls)
         obj._value_ = args[0]
