@@ -66,7 +66,13 @@ def listener():
                 # wczytuj parametr dopóki nie ma poprawnego formatu
                 while True:
                     inputParams[i] = input(param.text())
-                    if param.isCorrect(inputParams[i]):
-                        break
+                    try:
+                        if param.isCorrect(inputParams[i]):
+                            break
+                    except:
+                        print('Wystąpił problem podczas weryfikowania parametru\nPodaj parametr jeszcze raz')
 
-        operation.run(inputParams)
+        try:
+            operation.run(inputParams)
+        except:
+            print('Wystąpił problem podczas wykonywania operacji\nOperacja została anulowana')
