@@ -220,12 +220,9 @@ def correctStandard(s):
             print(errorText)
             return False
     return True
-
-def correctString(s):
-     return True
      
 
-def correctDateHour(s):
+def correctDeadline(s):
     errorText = '\tBłędnie wprowadzony termin usługi\n\tPoprawny format: 1.1.2022 13:30'
     time = s.split(' ')
 

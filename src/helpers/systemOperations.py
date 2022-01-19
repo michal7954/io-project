@@ -60,10 +60,8 @@ def listener():
         for i in range(n):
             param = operation.params[i]
             if type(param) == str:
-                # dodaje typ (dla usług)
-                if param[0:2]=="t:": inputParams[i]=param[2:]
                 # wyświetl tekst pomocniczy
-                else: print(param)
+                print(param)
             else:
                 # wczytuj parametr dopóki nie ma poprawnego formatu
                 while True:

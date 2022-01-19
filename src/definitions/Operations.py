@@ -2,6 +2,7 @@ from enum import Enum
 from definitions.Params import Params
 from helpers.systemOperations import logout
 import storage
+from classes.Date import Date
 
 
 class Operations(Enum):
@@ -85,25 +86,25 @@ class Operations(Enum):
         lambda params: storage.reservations.get(int(params[0])).checkPaymentStatus()
     )
 
-    tide = (
+    orderTide = (
         'tide',
         'Zamów sprzątanie pokoju',
-        ['t:tide',Params.reservationID, Params.description, Params.time],
-        storage.services.add
+        [Params.reservationID, Params.serviceComments, Params.serviceDeadline],
+        lambda params: storage.services.add(['tide']+params)
     )
 
-    breakfast = (
+    orderBreakfast = (
         'breakfast',
         'Zamów śniadanie do pokoju',
-        ['t:breakfast',Params.reservationID, Params.description, Params.time],
-        storage.services.add
+        [Params.reservationID, Params.serviceComments, Params.serviceDeadline],
+        lambda params: storage.services.add(['breakfast']+params)
     )
 
-    conservator = (
+    orderConservator = (
         'conservator',
         'Zamów konserwatora',
-        ['t:conservator',Params.reservationID, Params.description, Params.time],
-        storage.services.add
+        [Params.reservationID, Params.serviceComments, Params.serviceDeadline],
+        lambda params: storage.services.add(['conservator']+params)
     )
 
     listServices = (
@@ -113,17 +114,17 @@ class Operations(Enum):
         storage.services.listElements
         )
 
-    availableRooms=(
+    findAvailable = (
         'availableRooms',
         'Wyświetl pokoje dostępne w zadanym terminie',
         [Params.reservationStart, Params.reservationEnd],
-        storage.rooms.availableRooms
+        lambda params: storage.rooms.findAvailable(Date(params[0]),Date(params[1]))
     )
-    markCompletion=(
-        'markCompletion',
+    setDone = (
+        'setDone',
         'Oznacz usługę jako wykonaną',
         [Params.serviceID],
-        lambda params: storage.services.get(int(params[0])).markCompletion()
+        lambda params: storage.services.get(int(params[0])).setDone()
         )
 
     logout = (

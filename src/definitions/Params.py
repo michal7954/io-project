@@ -84,16 +84,16 @@ class Params(Enum):
         correctPaymentMethod,
     )
 
-    description = (
-        'description',
+    serviceComments = (
+        'serviceComments',
         'Podaj opis usługi',
-        correctString,
+        lambda _: True,
     )
    
-    time = (
-        'time',
-        'Podaj datę i godzinę',
-        correctDateHour,
+    serviceDeadline = (
+        'serviceDeadline',
+        'Podaj datę i godzinę [DD.MM.YYYY HH:MM]',
+        correctDeadline,
     )
 
     serviceID = (

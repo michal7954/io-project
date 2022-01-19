@@ -1,7 +1,5 @@
 from definitions.ObjectStatus import ObjectStatus
 from definitions.ServiceStatus import ServiceStatus
-from definitions.PaymentStatus import PaymentStatus
-from definitions.PaymentMethod import PaymentMethod
 from classes.Date import Date
 import storage
 
@@ -32,14 +30,14 @@ class Service():
 
     def __str__(self):
         if self.serviceStatus == ServiceStatus.Pending:
-            status="niezrealizowana"
-        else: status="zrealizowana"
+            status='niezrealizowana'
+        else: status='zrealizowana'
 
         if self.type == 'breakfast':
-            type="Śniadnie"
+            type='Śniadanie'
         elif self.type =='tide':
-            type="Sprzątanie"
-        else: type="Konserwator"
+            type='Sprzątanie'
+        else: type='Konserwator'
 
         return f'#{self.key} ID usługi: {self.key}, typ: '+type+f' ID rezerwacji: {self.reservationKey}, Opis: {self.description}, Termin: {self.time}, status: '+status
 
@@ -50,6 +48,6 @@ class Service():
         if self.serviceStatus == ServiceStatus.Pending:
             print('Usługa w trakcie')
 
-    def markCompletion(self):
+    def setDone(self):
         self.serviceStatus = ServiceStatus.Done
         print('Usługa wykonana')

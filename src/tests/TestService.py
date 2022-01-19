@@ -14,8 +14,8 @@ class TestService(unittest.TestCase):
     def test_1(self):
         service = Service(
             101,
-            # [idRezerwacji, typ, opis, termin]
-            [2, 'breakfast', '', '4.1.2022']
+            # [typ, ID rezerwacji, opis, termin]
+            ['breakfast', 2, '', '4.1.2022 10:00']
         )
         self.assertEqual(service.objectStatus, ObjectStatus.Ok)
         self.assertEqual(service.serviceStatus, ServiceStatus.Pending)
@@ -23,7 +23,7 @@ class TestService(unittest.TestCase):
     def test_2(self):
         service = Service(
             101,
-            [3, 'breakfast', '', '7.1.2022']
+            ['breakfast', 3, '', '7.1.2022 9:00']
         )
         self.assertEqual(service.objectStatus, ObjectStatus.Ok)
         self.assertEqual(service.serviceStatus, ServiceStatus.Pending)
@@ -31,7 +31,7 @@ class TestService(unittest.TestCase):
     def test_3(self):
         service = Service(
             101,
-            [3, 'breakfast', '', '8.1.2022']
+            ['breakfast', 3, '', '8.1.2022 10:15']
         )
         service.setDone()
         self.assertEqual(service.objectStatus, ObjectStatus.Ok)
@@ -41,7 +41,7 @@ class TestService(unittest.TestCase):
     def test_4(self):
         service = Service(
             101,
-            [3, 'breakfast', '', '6.1.2022']
+            ['breakfast', 3, '', '6.1.2022 8:30']
         )
         self.assertEqual(service.objectStatus, ObjectStatus.Forbidden,
                          'Niedozwolony czas wykonania usługi nieobsłużony')
@@ -49,7 +49,7 @@ class TestService(unittest.TestCase):
     def test_5(self):
         service = Service(
             101,
-            [3, 'breakfast', '', '10.1.2022']
+            ['breakfast', 3, '', '10.1.2022 9:00']
         )
         self.assertEqual(service.objectStatus, ObjectStatus.Forbidden,
                          'Niedozwolony czas wykonania usługi nieobsłużony')

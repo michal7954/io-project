@@ -1,7 +1,12 @@
 import storage
+from io import StringIO
+import sys
 
 
 def initData():
+
+    capturedOutput = StringIO()
+    sys.stdout = capturedOutput
 
     storage.rooms.add([1, 4, 40.50, '*'])  # 1
     storage.rooms.add([2, 2, 50.40, '**'])  # 2
@@ -26,7 +31,7 @@ def initData():
 
     storage.reservations.add([1, '1.1.2022', '2.1.2022', 'Michał', 'Nowak', '12345678910', '347218904'])  # 1
     storage.reservations.add([1, '3.1.2022', '7.1.2022', 'Joanna', 'Kowalska', '92071314764', '125734890'])  # 2
-    storage.reservations.add([1, '7.1.2022', '9.1.2022', 'Klaudia', 'Wiśniewska', '81100216347', '189450893'])  # 3
+    storage.reservations.add([2, '7.1.2022', '9.1.2022', 'Klaudia', 'Wiśniewska', '81100216347', '189450893'])  # 3
     storage.reservations.add([1, '10.1.2022', '23.1.2022', 'Natalia', 'Wójcik', '80072909146', '674409125'])  # 4
     storage.reservations.add([1, '9.1.2022', '10.1.2022', 'Oliwia', 'Kowalczyk', '90080517425', '757980865'])  # 5
     storage.reservations.add([1, '24.1.2022', '31.1.2022', 'Kamila', 'Kamińska', '90060804706', '740229678'])  # 6
@@ -42,3 +47,20 @@ def initData():
     storage.reservations.add([14, '1.1.2022', '3.1.2022', 'Kamil', 'Jankowski', '00123027871', '267893621'])  # 13
     storage.reservations.add([14, '10.1.2022', '17.1.2022', 'Paulina', 'Mazur', '92112671146', '378840255'])  # 14
     storage.reservations.add([14, '24.1.2022', '31.1.2022', 'Jan', 'Kwiatkowski', '88100752214', '561129334'])  # 15
+
+    storage.reservations.get(1).accommodate(['Michał', 'Nowak', '12345678910'])
+    storage.reservations.get(2).accommodate(['Joanna', 'Kowalska', '92071314764'])
+    storage.reservations.get(3).accommodate(['Klaudia', 'Wiśniewska', '81100216347'])
+    storage.reservations.get(7).accommodate(['Damian', 'Lewandowski', '91810112311'])
+   
+
+
+    storage.services.add(['breakfast',1,'','2.1.2022 10:00'])
+    storage.services.add(['tide',1,'','2.1.2022 12:00'])
+    storage.services.add(['tide',7,'','2.1.2022 20:00'])
+    storage.services.add(['conservator',7,'','2.1.2022 20:00'])
+
+    sys.stdout = sys.__stdout__
+
+
+

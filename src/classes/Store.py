@@ -1,4 +1,5 @@
 from definitions.ObjectStatus import ObjectStatus
+from classes.Room import Room
 from helpers.dateIntervalsDivergent import dateIntervalsDivergent
 import storage
 from classes.Date import Date
@@ -54,13 +55,7 @@ class Store():
     def hasattr(self, key):
         return key in self.elements
 
-    def availableRooms(self, params):
-        start=Date(params[0])        
-        end=Date(params[1])    
+    def findAvailable(self, start, end):
         for room in self.elements.values():
-            for reservationKey in room.reservations:
-                reservation = storage.reservations.get(reservationKey)
-                if not dateIntervalsDivergent(start, end, reservation.start, reservation.end):
-                    break
-            else:
+            if room.checkAvailability(start, end):
                 print(room)
