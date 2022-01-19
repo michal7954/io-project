@@ -30,7 +30,6 @@ class Users(Enum):
         'guest',
         'Gość hotelu',
         [
-            Operations.checkPaymentStatus,
             Operations.orderTide,
             Operations.orderBreakfast,
             Operations.orderConservator,

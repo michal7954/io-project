@@ -87,21 +87,21 @@ class Operations(Enum):
     )
 
     orderTide = (
-        'tide',
+        'orderTide',
         'Zamów sprzątanie pokoju',
         [Params.reservationID, Params.serviceComments, Params.serviceDeadline],
         lambda params: storage.services.add(['tide']+params)
     )
 
     orderBreakfast = (
-        'breakfast',
+        'orderBreakfast',
         'Zamów śniadanie do pokoju',
         [Params.reservationID, Params.serviceComments, Params.serviceDeadline],
         lambda params: storage.services.add(['breakfast']+params)
     )
 
     orderConservator = (
-        'conservator',
+        'orderConservator',
         'Zamów konserwatora',
         [Params.reservationID, Params.serviceComments, Params.serviceDeadline],
         lambda params: storage.services.add(['conservator']+params)
@@ -115,7 +115,7 @@ class Operations(Enum):
         )
 
     findAvailable = (
-        'availableRooms',
+        'findAvailable',
         'Wyświetl pokoje dostępne w zadanym terminie',
         [Params.reservationStart, Params.reservationEnd],
         lambda params: storage.rooms.findAvailable(Date(params[0]),Date(params[1]))
