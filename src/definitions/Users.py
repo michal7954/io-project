@@ -29,7 +29,6 @@ class Users(Enum):
         'guest',
         'Gość hotelu',
         [
-            Operations.checkPaymentStatus,
             Operations.logout
         ],
     )
