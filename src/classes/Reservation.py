@@ -64,14 +64,17 @@ class Reservation():
 
     # Wymeldowanie
     def checkOut(self, params):
-         if self.accomodationStatus == AccomodationStatus.Accommodated:
+        if self.accomodationStatus == AccomodationStatus.Accommodated:
             if params[0] == self.name and params[1] == self.surname and params[2] == self.pesel:
                 if self.paymentStatus == PaymentStatus.Paid:
                     self.accomodationStatus = AccomodationStatus.Ended
                     print('\tWymeldowano')
-                else: print('\tNie uiszczono opłaty')
-            else: print('\tTożsamość nie została potwierdzona')
-        else: print('\tRezerwacja nie ma statusu zameldowania')
+                else:
+                    print('\tNie uiszczono opłaty')
+            else:
+                print('\tTożsamość nie została potwierdzona')
+        else:
+            print('\tRezerwacja nie ma statusu zameldowania')
 
     # Sprawdzenie statusu płatności podanej rezerwacji (opłacona,odroczona,niepołacona)
     def checkPaymentStatus(self):

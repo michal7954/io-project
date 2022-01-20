@@ -31,13 +31,15 @@ class Service():
     def __str__(self):
         if self.serviceStatus == ServiceStatus.Pending:
             status='niezrealizowana'
-        else: status='zrealizowana'
+        else:
+            status='zrealizowana'
 
         if self.type == 'breakfast':
             type='Śniadanie'
         elif self.type =='tide':
             type='Sprzątanie'
-        else: type='Konserwator'
+        else:
+            type='Konserwator'
 
         return f'#{self.key} ID usługi: {self.key}, typ: '+type+f' ID rezerwacji: {self.reservationKey}, Opis: {self.description}, Termin: {self.time}, status: '+status
 
