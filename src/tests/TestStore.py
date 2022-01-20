@@ -16,7 +16,7 @@ class TestStore(unittest.TestCase):
     def test_1(self):
         capturedOutput = StringIO()
         sys.stdout = capturedOutput
-        storage.rooms.findAvailable(['2.1.2022', '3.1.2022'])
+        storage.rooms.findAvailable(Date('2.1.2022'), Date('3.1.2022'))
         sys.stdout = sys.__stdout__
         resultsNumber = capturedOutput.getvalue().count('\n')
         self.assertEqual(resultsNumber, 16)
@@ -24,7 +24,7 @@ class TestStore(unittest.TestCase):
     def test_2(self):
         capturedOutput = StringIO()
         sys.stdout = capturedOutput
-        storage.rooms.findAvailable(['1.1.2022', '31.1.2022'])
+        storage.rooms.findAvailable(Date('1.1.2022'), Date('31.1.2022'))
         sys.stdout = sys.__stdout__
         resultsNumber = capturedOutput.getvalue().count('\n')
         self.assertEqual(resultsNumber, 14)
