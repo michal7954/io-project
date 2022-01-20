@@ -8,14 +8,10 @@ Procesy:
 Dodatkowe usługi:
 -konserwator
 -sprzątaczka
--miejsce parkingowe
--posiłki
-
-
+-śniadanie
 
 Aktorzy:
 -użytkownik (potencjalny klient)
 -kierownik hotelu (administrator systemu)
 -gość hotelu
 -recepcjonista
--obsługa

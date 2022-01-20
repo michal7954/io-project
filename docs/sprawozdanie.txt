@@ -40,34 +40,85 @@ Wykorzystanie repozytorium:
 
 Informacje o zaimplemetowanych testach jednostkowych:
 - Testy zostały zaimplementowane w celu sprawdzenia poprawności działania pojedynczych elementów kodu.
+- Testom poddawane są poszczególne funkcjonalności klas Date, Reservation, Service, Store. 
 - Testowana jest poprawność wprowadzanych danych podczas rezerwacji czy odpowiadają one założeniom technicznym.
-- Testowana jest poprawnośc wprowadzonych dat, czy nie wykraczają one poza zakres możliwych.
+- Testowana jest poprawność wprowadzonych dat, czy nie wykraczają one poza zakres możliwych.
+- Testowana jest poprawność danych wprowadzonych przez użytkownika, czy została ona wprowadzono prawidłowo, czy nie wykracza poza zakres czasowy. 
+- Testowana jest poprawność danych w Store.
+- Wykorzystany został eksplorator testów dostępny w Visual Studio.
+- Zaimplementowano łącznie 44 testy. 
+- Testy są umieszczone w osobnym pliku.
 
-TDD:
-- 
 
-Każdy podmiot posiada pewne uprawnienia do wykonywania operacji w wypożyczalni:
+TDD (przykładowe cykle):
+Cykl 1:
+1.Class TestReservation
+ https://github.com/michal7954/io-project/commit/90dbff8963f0cb2a067e63c9ca92c80804e09c7c 
+
+2.Oznacz Opłaconą + sprawdźStatusPłatności (odroczenie płatności)
+https://github.com/michal7954/io-project/commit/22c5380870e6cb75eed872088385d3ae50e33872
+
+3.Refaktoryzacja  
+https://github.com/michal7954/io-project/commit/01adb6c9cc5c25ae9be0c12e408b3b41598bc06d
+  
+
+Cykl 2:
+1.Class TestReservation
+ https://github.com/michal7954/io-project/commit/90dbff8963f0cb2a067e63c9ca92c80804e09c7c 
+
+2.Oznacz Opłaconą + sprawdźStatusPłatności (Sprawdzenie statusu płatności)
+https://github.com/michal7954/io-project/commit/22c5380870e6cb75eed872088385d3ae50e33872
+
+3.Refaktoryzacja sprawdzenia statusu płatności https://github.com/michal7954/io-project/commit/a01406f792239da5050bcd046184084e1aa5c63a
+
+Cykl 3:
+1.Class TestReservation 
+https://github.com/michal7954/io-project/commit/90dbff8963f0cb2a067e63c9ca92c80804e09c7c  
+
+2.Zapisanie metody płatności
+https://github.com/michal7954/io-project/commit/0e2369dcfb8333a94a3f7f74be731422d6dfe8a7
+
+3.Refaktoryzacja zapisania metody płatności 
+https://github.com/michal7954/io-project/commit/a01406f792239da5050bcd046184084e1aa5c63a
+
+Każdy podmiot posiada pewne uprawnienia do wykonywania operacji w hotelu:
 Użytkownik (potencjalny klient):
--
-Kierownik hotelu (administrator systemu):
--
+-listRooms: Wyświetl listę pokoi,
+-addReservation : Utwórz rezerwację, 
+-cancelReservation : Anuluj rezerwację - umożliwia anulowanie rezerwacji poprzez podanie ID,
+-findAvailable : Wyświetl pokoje dostępne w zadanym terminie,
+-logout : Wyloguj i wybierz nowego użytkownika. 
+
 Gość hotelu:
--
-Recepcjonista:
--
-Obsługa:
--
+-orderTide : Zamów sprzątanie pokoju,
+-orderrBeakfast : Zamów śniadanie do pokoju,
+-orderConservator : Zamów konserwatora,
+-logout : Wyloguj i wybierz nowego użytkownika. 
 
-Opis dostępnych operacji:
-1)addRoom: Dodaj pokój- 
-2)modifyRoom: Zmodyfikuj pokój-
-3)removeRoom: Usuń pokój-
-4)listRoom: Wyświetl listę pokoi-
-5)addReservations: Utwórz rezerwację-
-6)listReservations: Wyświetl listę rezerwacji-
-7)cancelReservations: Anuluj rezerwację-
-8)accomadaion: Zamelduj-
+Pracownik recepcji hotelu:
+-listRooms: Wyświetl listę pokoi 
+-addReservation : Utwórz rezerwację.
+-listReservations : Wyświetl listę rezerwacji, 
+-cancelReservation : Anuluj rezerwację ,
+-accommdate : Zamelduj,
+-checkOut : Wymelduj,
+-pay : Zapłać,
+-checkPaymentStatus : Sprawdź status płatności rezerwacji,
+-listServices : Wyświetl listę usług,
+-findAvailable : Wyświetl pokoje dostępne w zadanym terminie,
+-setDone : Oznacz usługę jako wykonaną,
+-logout : Wyloguj i wybierz nowego użytkownika. 
 
-Wprowadzenie innych liczb niż te powyższe spowoduje wyświetlenie komunikatu o niepoprawnej nazwie operacji i następuje powrót do menu.
+Administrator systemu/ menedżer hotelu:
+-addRoom : Dodaj pokój,
+-modifyRoom : Zmodyfikuj pokój
+-removeRoom : Usuń pokój,
+-listRooms : Wyświetl listę pokoi
+-listReservations : Wyświetl listę rezerwacji,
+-listServices : Wyświetl listę usług,
+-logout : Wyloguj i wybierz nowego użytkownika. 
 
-Dokumentacja opisuje działanie oprogramowania w wersji z dnia 30-12-2021.
+
+Wprowadzenie innych danych niż powyższe identyfikatory lub przypisanych im numerów będzie skutkowało wyświetleniem komunikatu o niepoprawnym identyfikatorze operacji.
+Dokumentacja opisuje działanie oprogramowania w wersji z dnia 19-01-2022.
+
