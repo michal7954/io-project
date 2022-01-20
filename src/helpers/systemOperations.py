@@ -1,5 +1,5 @@
 import storage
-
+from os import system
 
 def login():
     from definitions.Users import Users
@@ -70,3 +70,5 @@ def listener():
                         break
 
         operation.run(inputParams)
+        input('\tNaciśnij dowolny przycisk aby kontynuować')
+        system('cls')
