@@ -14,7 +14,7 @@ def login():
 
     # użytkownik nie istnieje
     if not hasattr(Users, user):
-        print('Niepoprawny identyfikator użytkownika')
+        print('\tNiepoprawny identyfikator użytkownika')
     else:
         storage.currentUser = user
 
@@ -50,7 +50,7 @@ def listener():
 
         # operacja nie istnieje
         if operation == None:
-            print('Niepoprawny identyfikator operacji')
+            print('\tNiepoprawny identyfikator operacji')
             continue
 
         n = len(operation.params)
