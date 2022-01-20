@@ -24,7 +24,7 @@ class Store():
         element = self.ClassTemplate(key, params)
         if element.objectStatus == ObjectStatus.Ok:
             return element
-        print('Błąd tworzenia obiektu')
+        print('\tBłąd tworzenia obiektu')
         return None
 
     def add(self, params):
@@ -32,6 +32,7 @@ class Store():
         element = self.prepareObject(key, params)
         if element:
             self.elements[key] = element
+            print('\tOperacja wkonana poprawnie')
             return key
 
     def modify(self, params):
