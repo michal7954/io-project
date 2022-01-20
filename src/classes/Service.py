@@ -20,12 +20,12 @@ class Service():
 
         reservation = storage.reservations.get(self.reservationKey)
         if not reservation.getAccomodationStatus() == 'zakwaterowanie':
-            print('Rezerwacja nie ma statusu zakwaterowania. Nie można wykonać usługi')
+            print('\tRezerwacja nie ma statusu zakwaterowania\n\tNie można wykonać usługi')
             self.objectStatus = ObjectStatus.Forbidden
 
         date = self.time.split(' ')
         if not (Date(date[0]) >= reservation.start and Date(date[0]) <= reservation.end):
-            print('Podany czas usługi jest niezgodny z datą pobytu. Nie można wykonac usługi')
+            print('\tPodany czas usługi jest niezgodny z datą pobytu\n\tNie można wykonac usługi')
             self.objectStatus = ObjectStatus.Forbidden
 
     def __str__(self):
@@ -44,10 +44,10 @@ class Service():
     # Sprawdzenie statusu wykonania podanej usługi
     def checkServiceStatus(self):
         if self.serviceStatus == ServiceStatus.Done:
-            print('Usługa wykonana')
+            print('\tUsługa wykonana')
         if self.serviceStatus == ServiceStatus.Pending:
-            print('Usługa w trakcie')
+            print('\tUsługa w trakcie')
 
     def setDone(self):
         self.serviceStatus = ServiceStatus.Done
-        print('Usługa wykonana')
+        print('\tUsługa wykonana')
