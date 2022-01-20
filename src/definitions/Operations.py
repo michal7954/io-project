@@ -2,6 +2,7 @@ from enum import Enum
 from definitions.Params import Params
 from helpers.systemOperations import logout
 import storage
+from classes.Date import Date
 
 
 class Operations(Enum):
@@ -84,6 +85,47 @@ class Operations(Enum):
         [Params.reservationID],
         lambda params: storage.reservations.get(int(params[0])).checkPaymentStatus()
     )
+
+    orderTide = (
+        'tide',
+        'Zamów sprzątanie pokoju',
+        [Params.reservationID, Params.serviceComments, Params.serviceDeadline],
+        lambda params: storage.services.add(['tide']+params)
+    )
+
+    orderBreakfast = (
+        'breakfast',
+        'Zamów śniadanie do pokoju',
+        [Params.reservationID, Params.serviceComments, Params.serviceDeadline],
+        lambda params: storage.services.add(['breakfast']+params)
+    )
+
+    orderConservator = (
+        'conservator',
+        'Zamów konserwatora',
+        [Params.reservationID, Params.serviceComments, Params.serviceDeadline],
+        lambda params: storage.services.add(['conservator']+params)
+    )
+
+    listServices = (
+        'listServices',
+        'Wyświetl listę usług',
+        [],
+        storage.services.listElements
+        )
+
+    findAvailable = (
+        'availableRooms',
+        'Wyświetl pokoje dostępne w zadanym terminie',
+        [Params.reservationStart, Params.reservationEnd],
+        lambda params: storage.rooms.findAvailable(Date(params[0]),Date(params[1]))
+    )
+    setDone = (
+        'setDone',
+        'Oznacz usługę jako wykonaną',
+        [Params.serviceID],
+        lambda params: storage.services.get(int(params[0])).setDone()
+        )
 
     logout = (
         'logout',

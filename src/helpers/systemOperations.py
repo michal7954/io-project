@@ -1,5 +1,5 @@
 import storage
-
+from os import system
 
 def login():
     from definitions.Users import Users
@@ -14,7 +14,7 @@ def login():
 
     # użytkownik nie istnieje
     if not hasattr(Users, user):
-        print('Niepoprawny identyfikator użytkownika')
+        print('\tNiepoprawny identyfikator użytkownika')
     else:
         storage.currentUser = user
 
@@ -50,7 +50,7 @@ def listener():
 
         # operacja nie istnieje
         if operation == None:
-            print('Niepoprawny identyfikator operacji')
+            print('\tNiepoprawny identyfikator operacji')
             continue
 
         n = len(operation.params)
@@ -76,3 +76,6 @@ def listener():
             operation.run(inputParams)
         except:
             print('Wystąpił problem podczas wykonywania operacji\nOperacja została anulowana')
+
+        input('\tNaciśnij dowolny przycisk aby kontynuować')
+        system('cls')

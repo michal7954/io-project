@@ -220,6 +220,43 @@ def correctStandard(s):
             print(errorText)
             return False
     return True
+     
+
+def correctDeadline(s):
+    errorText = '\tBłędnie wprowadzony termin usługi\n\tPoprawny format: 1.1.2022 13:30'
+    time = s.split(' ')
+
+    if len(time) != 2:
+        print(errorText)
+        return False
+
+    if not correctDate(time[0]):
+        print(errorText)
+        return False
+
+    hour = time[1].split(':')
+
+    # Czy są liczbami
+    if not hour[0].isdigit() or not hour[1].isdigit():
+        print(errorText)
+        return False
+
+    # Czy poprawna długość członów
+    if len(hour[0]) < 0 or len(hour[0]) > 2 or len(hour[1]) != 2:
+        print(errorText)
+        return False
+
+    if int(hour[0]) < 0 or int(hour[0]) > 24:
+        print(errorText)
+        return False
+
+    if int(hour[1]) < 0 or int(hour[1]) > 60:
+        print(errorText)
+        return False
+
+    return True
+
+
 
 
 def correctRoomID(s):
@@ -243,4 +280,15 @@ def correctReservationID(s):
     if storage.reservations.hasattr(int(s)):
         return True
     print(f'{errorTextPrefix}Brak rezerwacji o podanym ID w bazie')
+    return False
+
+def correctServiceID(s):
+    errorTextPrefix = '\tBłędnie wprowadzone ID usługi\n\t'
+
+    if not s.isdigit():
+        print(f'{errorTextPrefix}ID usługi musi być liczbą')
+        return False
+    if storage.services.hasattr(int(s)):
+        return True
+    print(f'{errorTextPrefix}Brak usługi o podanym ID w bazie')
     return False

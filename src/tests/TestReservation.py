@@ -15,7 +15,7 @@ class TestReservation(unittest.TestCase):
     def test_1(self):
         reservation = Reservation(
             101,
-            [2, '3.1.2022', '9.1.2022','Adam','Kowal','12345678910','123456789']
+            [3, '3.1.2022', '9.1.2022','Adam','Kowal','12345678910','123456789']
         )
         self.assertEqual(reservation.objectStatus, ObjectStatus.Ok)
         self.assertEqual(reservation.accomodationStatus,
@@ -57,7 +57,7 @@ class TestReservation(unittest.TestCase):
     def test_6(self):
         reservation = Reservation(
             101,
-            [2, '3.1.2022', '9.1.2022','Adam','Kowal','12345678910','123456789']
+            [3, '3.1.2022', '9.1.2022','Adam','Kowal','12345678910','123456789']
         )
         reservation.cancelReservation()
         self.assertEqual(reservation.objectStatus, ObjectStatus.Ok)

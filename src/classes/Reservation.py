@@ -6,7 +6,6 @@ import storage
 from classes.Date import Date
 from helpers.numberOfDays import numberOfDays
 from helpers.correctData import correctReservation
-from time import sleep
 
 
 class Reservation():
@@ -31,7 +30,7 @@ class Reservation():
             # weryfikacja dostępności pokoju
             room = storage.rooms.get(self.roomKey)
             if not room.checkAvailability(self.start, self.end):
-                print('Pokój niedostępny w tym terminie')
+                print('\tPokój niedostępny w tym terminie')
                 self.objectStatus = ObjectStatus.Forbidden
             else:
                 room.addReservation(self.key)
@@ -53,42 +52,43 @@ class Reservation():
 
     def cancelReservation(self):
         self.accomodationStatus = AccomodationStatus.Canceled
+        print('\tRezerwacja anulowana')
 
     def accommodate(self, params):
         # Sprawdzamy czy dane wprowadzone przy rezerwacji zgadają się z tymi podanymi przy zameldowaniu
         if params[0] == self.name and params[1] == self.surname and params[2] == self.pesel:
             self.accomodationStatus = AccomodationStatus.Accommodated
-            print('Zameldowano')
+            print('\tZameldowano')
         else:
-            print('Tożsamość nie została potwierdzona')
+            print('\tTożsamość nie została potwierdzona')
 
     # Wymeldowanie
     def checkOut(self, params):
-        if params[0] == self.name and params[1] == self.surname and params[2] == self.pesel:
-            if self.paymentStatus == PaymentStatus.Paid:
-                self.accomodationStatus = AccomodationStatus.Ended
-                print('Wymeldowano. Dziękujemy za pobyt')
-            else:
-                print('Musisz dokonać płatności')
-        else:
-            print('Tożsamość nie została potwierdzona')
+         if self.accomodationStatus == AccomodationStatus.Accommodated:
+            if params[0] == self.name and params[1] == self.surname and params[2] == self.pesel:
+                if self.paymentStatus == PaymentStatus.Paid:
+                    self.accomodationStatus = AccomodationStatus.Ended
+                    print('\tWymeldowano')
+                else: print('\tNie uiszczono opłaty')
+            else: print('\tTożsamość nie została potwierdzona')
+        else: print('\tRezerwacja nie ma statusu zameldowania')
 
     # Sprawdzenie statusu płatności podanej rezerwacji (opłacona,odroczona,niepołacona)
     def checkPaymentStatus(self):
         if self.paymentStatus == PaymentStatus.Paid:
-            print('Rezerwacja opłacona')
+            print('\tRezerwacja opłacona')
         if self.paymentStatus == PaymentStatus.Deferred:
-            print('Płatność odrocznona')
+            print('\tPłatność odrocznona')
         if self.paymentStatus == PaymentStatus.Unpaid:
-            print('Rezerwacja nieopłacona')
+            print('\tRezerwacja nieopłacona')
 
     # Realizacja płatności i zmiana statusu
     def markPaid(self, params):
         if self.accomodationStatus == AccomodationStatus.Canceled or self.accomodationStatus == AccomodationStatus.Ended:
-            print('Rezerwacja nieaktualna')
+            print('\tRezerwacja nieaktualna')
             return
         if self.paymentStatus == PaymentStatus.Paid:
-            print('Rezerwacja opłacona')
+            print('\tRezerwacja opłacona')
             return
 
         # Zapisanie metody płatności
@@ -107,26 +107,22 @@ class Reservation():
         number = numberOfDays(self.start, self.end)
         prize = room.costPerDay * number
 
-        print(f'Koszt pobytu wynosi: {prize:.2f} zł')
+        print(f'\tKoszt pobytu wynosi: {prize:.2f} zł')
 
         # Możliwość odroczenia płatności, przy pobycie dłuższym niż 5 dni
         if number > 5:
-            print('Pobyt wynosi więcej niż 5 dni. Płatność może zostać zrealizowana podczas wymeldowania.')
+            print('\tPobyt wynosi więcej niż 5 dni\nPłatność może zostać zrealizowana podczas wymeldowania.')
             answer = ''
             while answer != 'TAK' and answer != 'NIE':
-                answer = input('Czy chcesz odroczyć płatność? [TAK, NIE]: ')
+                answer = input('\tCzy chcesz odroczyć płatność? [TAK, NIE]: ')
                 if answer == 'TAK':
                     self.paymentStatus = PaymentStatus.Deferred
-                    print('Płatność odroczona')
+                    print('\tPłatność odroczona')
                 elif answer == 'NIE':
                     self.paymentStatus = PaymentStatus.Paid
-                    print('...')
-                    sleep(3)
-                    print(f'Zapłacono. Użyta metoda płatności: {method}')
+                    print(f'\tZapłacono. Użyta metoda płatności: {method}')
                 else:
-                    print('Błędnie wprowadzona odpowiedź. Podaj [TAK, NIE]')
+                    print('\tBłędnie wprowadzona odpowiedź. Podaj [TAK, NIE]')
         else:
             self.paymentStatus = PaymentStatus.Paid
-            print('...')
-            sleep(3)
-            print(f'Zapłacono. Użyta metoda płatności: {method}')
+            print(f'\tZapłacono. Użyta metoda płatności: {method}')

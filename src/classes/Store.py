@@ -1,5 +1,8 @@
 from definitions.ObjectStatus import ObjectStatus
-
+from classes.Room import Room
+from helpers.dateIntervalsDivergent import dateIntervalsDivergent
+import storage
+from classes.Date import Date
 
 class Store():
     # MagazynDanych odpowiada za przechowywanie listy rekordów jednego z typów
@@ -21,7 +24,6 @@ class Store():
         element = self.ClassTemplate(key, params)
         if element.objectStatus == ObjectStatus.Ok:
             return element
-        print('Błąd tworzenia obiektu')
         return None
 
     def add(self, params):
@@ -29,6 +31,7 @@ class Store():
         element = self.prepareObject(key, params)
         if element:
             self.elements[key] = element
+            print('\tOperacja wkonana poprawnie')
             return key
 
     def modify(self, params):
@@ -51,3 +54,8 @@ class Store():
 
     def hasattr(self, key):
         return key in self.elements
+
+    def findAvailable(self, start, end):
+        for room in self.elements.values():
+            if room.checkAvailability(start, end):
+                print(room)

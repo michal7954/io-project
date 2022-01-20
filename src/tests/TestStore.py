@@ -27,7 +27,7 @@ class TestStore(unittest.TestCase):
         storage.rooms.findAvailable(['1.1.2022', '31.1.2022'])
         sys.stdout = sys.__stdout__
         resultsNumber = capturedOutput.getvalue().count('\n')
-        self.assertEqual(resultsNumber, 15)
+        self.assertEqual(resultsNumber, 14)
 
     def test_3(self):
         capturedOutput = StringIO()
