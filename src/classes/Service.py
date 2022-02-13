@@ -34,7 +34,7 @@ class Service():
             type = 'Śniadanie'
         elif self.type == 'tide':
             type = 'Sprzątanie'
-        else:
+        elif self.type == 'conservator':
             type = 'Konserwator'
 
         return f'#{self.key} ID usługi: {self.key}, typ: {type} ID rezerwacji: {self.reservationKey}, Opis: {self.description}, Termin: {self.time}, status: '+self.serviceStatus.description

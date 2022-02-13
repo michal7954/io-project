@@ -90,21 +90,21 @@ class Operations(Enum):
         'orderTide',
         'Zamów sprzątanie pokoju',
         [Params.reservationID, Params.serviceComments, Params.serviceDeadline],
-        lambda params: storage.services.add(['tide']+params)
+        lambda params: storage.services.add(['tide'] + params)
     )
 
     orderBreakfast = (
         'orderBreakfast',
         'Zamów śniadanie do pokoju',
         [Params.reservationID, Params.serviceComments, Params.serviceDeadline],
-        lambda params: storage.services.add(['breakfast']+params)
+        lambda params: storage.services.add(['breakfast'] + params)
     )
 
     orderConservator = (
         'orderConservator',
         'Zamów konserwatora',
         [Params.reservationID, Params.serviceComments, Params.serviceDeadline],
-        lambda params: storage.services.add(['conservator']+params)
+        lambda params: storage.services.add(['conservator'] + params)
     )
 
     listServices = (

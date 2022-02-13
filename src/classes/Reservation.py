@@ -97,7 +97,7 @@ class Reservation():
         if number > 5:
             print('\tPobyt wynosi więcej niż 5 dni\nPłatność może zostać zrealizowana podczas wymeldowania.')
             answer = ''
-            while answer != 'TAK' and answer != 'NIE':
+            while not answer in ['TAK', 'NIE']:
                 answer = input('\tCzy chcesz odroczyć płatność? [TAK, NIE]: ')
                 if answer == 'TAK':
                     self.paymentStatus = PaymentStatus.Deferred
