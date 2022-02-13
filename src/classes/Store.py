@@ -1,8 +1,5 @@
 from definitions.ObjectStatus import ObjectStatus
-from classes.Room import Room
-from helpers.dateIntervalsDivergent import dateIntervalsDivergent
-import storage
-from classes.Date import Date
+
 
 class Store():
     # MagazynDanych odpowiada za przechowywanie listy rekordów jednego z typów

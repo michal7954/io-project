@@ -13,9 +13,9 @@ class Service():
         # lista kluczy rezerwacji przypisanych do tego pokoju
         self.objectStatus = ObjectStatus.Ok
         self.serviceStatus = ServiceStatus.Pending
-       
+
         self.type = str(params[0])
-        self.reservationKey=int(params[1])
+        self.reservationKey = int(params[1])
         self.description = str(params[2])
         self.time = str(params[3])
 
@@ -31,13 +31,13 @@ class Service():
 
     def __str__(self):
         if self.type == 'breakfast':
-            type='Śniadanie'
-        elif self.type =='tide':
-            type='Sprzątanie'
+            type = 'Śniadanie'
+        elif self.type == 'tide':
+            type = 'Sprzątanie'
         else:
-            type='Konserwator'
+            type = 'Konserwator'
 
-        return f'#{self.key} ID usługi: {self.key}, typ: '+type+f' ID rezerwacji: {self.reservationKey}, Opis: {self.description}, Termin: {self.time}, status: '+self.serviceStatus.description
+        return f'#{self.key} ID usługi: {self.key}, typ: {type} ID rezerwacji: {self.reservationKey}, Opis: {self.description}, Termin: {self.time}, status: '+self.serviceStatus.description
 
     # Sprawdzenie statusu wykonania podanej usługi
     def checkServiceStatus(self):

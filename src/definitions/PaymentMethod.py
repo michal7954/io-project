@@ -27,7 +27,6 @@ class PaymentMethod(Enum):
         'blik',
         'BLIK'
     )
-    
 
     def __new__(cls, *args, **kwds):
         obj = object.__new__(cls)

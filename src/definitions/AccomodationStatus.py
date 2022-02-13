@@ -2,7 +2,7 @@ from enum import Enum, auto
 
 
 class AccomodationStatus(Enum):
-    
+
     Reserved = (
         'reserved',
         'zarezerwowana'
@@ -22,7 +22,6 @@ class AccomodationStatus(Enum):
         'ended',
         'zakończona'
     )
-    
 
     def __new__(cls, *args, **kwds):
         obj = object.__new__(cls)

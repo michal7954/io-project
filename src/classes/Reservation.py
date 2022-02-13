@@ -36,7 +36,7 @@ class Reservation():
                 room.addReservation(self.key)
         else:
             self.objectStatus = ObjectStatus.Forbidden
-            
+
     def __str__(self):
         return f'#{self.key} pokój #{self.roomKey}, {self.start}-{self.end}, status {self.accomodationStatus.description}, dane gościa: {self.name} {self.surname}, PESEL: {self.pesel}, tel.: {self.phone}'
 
@@ -82,7 +82,7 @@ class Reservation():
         # Zapisanie metody płatności
         for method in PaymentMethod:
             if method.match(params[1]):
-                self.paymentMethod=method
+                self.paymentMethod = method
 
         # Obliczanie ceny pobytu
         room = storage.rooms.get(self.roomKey)
@@ -92,7 +92,7 @@ class Reservation():
         print(f'\tKoszt pobytu wynosi: {prize:.2f} zł')
 
         paymentConfirmation = f'\tZapłacono. Użyta metoda płatności: {self.paymentMethod.description}'
-        
+
         # Możliwość odroczenia płatności, przy pobycie dłuższym niż 5 dni
         if number > 5:
             print('\tPobyt wynosi więcej niż 5 dni\nPłatność może zostać zrealizowana podczas wymeldowania.')
