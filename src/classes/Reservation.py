@@ -90,15 +90,9 @@ class Reservation():
             return
 
         # Zapisanie metody płatności
-        method = params[1]
-        if method == 'gotówka':
-            self.paymentMethod = PaymentMethod.Cash
-        if method == 'karta':
-            self.paymentMethod = PaymentMethod.Card
-        if method == 'telefon':
-            self.paymentMethod = PaymentMethod.Phone
-        if method == 'BLIK':
-            self.paymentMethod = PaymentMethod.Blik
+        for method in PaymentMethod:
+            if method.match(params[1]):
+                self.paymentMethod=method
 
         # Obliczanie ceny pobytu
         room = storage.rooms.get(self.roomKey)
@@ -107,6 +101,8 @@ class Reservation():
 
         print(f'\tKoszt pobytu wynosi: {prize:.2f} zł')
 
+        paymentConfirmation = f'\tZapłacono. Użyta metoda płatności: {self.paymentMethod.description}'
+        
         # Możliwość odroczenia płatności, przy pobycie dłuższym niż 5 dni
         if number > 5:
             print('\tPobyt wynosi więcej niż 5 dni\nPłatność może zostać zrealizowana podczas wymeldowania.')
@@ -118,9 +114,9 @@ class Reservation():
                     print(f'\t{self.paymentStatus.description}')
                 elif answer == 'NIE':
                     self.paymentStatus = PaymentStatus.Paid
-                    print(f'\tZapłacono. Użyta metoda płatności: {method}')
+                    print(paymentConfirmation)
                 else:
                     print('\tBłędnie wprowadzona odpowiedź. Podaj [TAK, NIE]')
         else:
             self.paymentStatus = PaymentStatus.Paid
-            print(f'\tZapłacono. Użyta metoda płatności: {method}')
+            print(paymentConfirmation)
