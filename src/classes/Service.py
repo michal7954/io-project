@@ -1,3 +1,4 @@
+from definitions.AccomodationStatus import AccomodationStatus
 from definitions.ObjectStatus import ObjectStatus
 from definitions.ServiceStatus import ServiceStatus
 from classes.Date import Date
@@ -19,7 +20,7 @@ class Service():
         self.time = str(params[3])
 
         reservation = storage.reservations.get(self.reservationKey)
-        if not reservation.getAccomodationStatus() == 'zakwaterowanie':
+        if reservation.accomodationStatus != AccomodationStatus.Accommodated:
             print('\tRezerwacja nie ma statusu zakwaterowania\n\tNie można wykonać usługi')
             self.objectStatus = ObjectStatus.Forbidden
 
