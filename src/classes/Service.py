@@ -26,15 +26,10 @@ class Service():
 
         date = self.time.split(' ')
         if not (Date(date[0]) >= reservation.start and Date(date[0]) <= reservation.end):
-            print('\tPodany czas usługi jest niezgodny z datą pobytu\n\tNie można wykonac usługi')
+            print('\tPodany czas usługi jest niezgodny z datą pobytu\n\tNie można wykonać usługi')
             self.objectStatus = ObjectStatus.Forbidden
 
     def __str__(self):
-        if self.serviceStatus == ServiceStatus.Pending:
-            status='niezrealizowana'
-        else:
-            status='zrealizowana'
-
         if self.type == 'breakfast':
             type='Śniadanie'
         elif self.type =='tide':
@@ -42,15 +37,12 @@ class Service():
         else:
             type='Konserwator'
 
-        return f'#{self.key} ID usługi: {self.key}, typ: '+type+f' ID rezerwacji: {self.reservationKey}, Opis: {self.description}, Termin: {self.time}, status: '+status
+        return f'#{self.key} ID usługi: {self.key}, typ: '+type+f' ID rezerwacji: {self.reservationKey}, Opis: {self.description}, Termin: {self.time}, status: '+self.serviceStatus.description
 
     # Sprawdzenie statusu wykonania podanej usługi
     def checkServiceStatus(self):
-        if self.serviceStatus == ServiceStatus.Done:
-            print('\tUsługa wykonana')
-        if self.serviceStatus == ServiceStatus.Pending:
-            print('\tUsługa w trakcie')
+        print(f'\tUsługa {self.serviceStatus.description}')
 
     def setDone(self):
         self.serviceStatus = ServiceStatus.Done
-        print('\tUsługa wykonana')
+        self.checkServiceStatus()
