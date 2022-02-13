@@ -78,12 +78,7 @@ class Reservation():
 
     # Sprawdzenie statusu płatności podanej rezerwacji (opłacona,odroczona,niepołacona)
     def checkPaymentStatus(self):
-        if self.paymentStatus == PaymentStatus.Paid:
-            print('\tRezerwacja opłacona')
-        if self.paymentStatus == PaymentStatus.Deferred:
-            print('\tPłatność odrocznona')
-        if self.paymentStatus == PaymentStatus.Unpaid:
-            print('\tRezerwacja nieopłacona')
+        print(f'\t{self.paymentStatus.description}')
 
     # Realizacja płatności i zmiana statusu
     def markPaid(self, params):
@@ -91,7 +86,7 @@ class Reservation():
             print('\tRezerwacja nieaktualna')
             return
         if self.paymentStatus == PaymentStatus.Paid:
-            print('\tRezerwacja opłacona')
+            print(f'\t{self.paymentStatus.description}')
             return
 
         # Zapisanie metody płatności
@@ -120,7 +115,7 @@ class Reservation():
                 answer = input('\tCzy chcesz odroczyć płatność? [TAK, NIE]: ')
                 if answer == 'TAK':
                     self.paymentStatus = PaymentStatus.Deferred
-                    print('\tPłatność odroczona')
+                    print(f'\t{self.paymentStatus.description}')
                 elif answer == 'NIE':
                     self.paymentStatus = PaymentStatus.Paid
                     print(f'\tZapłacono. Użyta metoda płatności: {method}')
