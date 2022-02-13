@@ -37,18 +37,8 @@ class Reservation():
         else:
             self.objectStatus = ObjectStatus.Forbidden
 
-    def getAccomodationStatus(self):
-        if self.accomodationStatus == AccomodationStatus.Reserved:
-            return 'zarezerwowana'
-        elif self.accomodationStatus == AccomodationStatus.Canceled:
-            return 'anulowana'
-        elif self.accomodationStatus == AccomodationStatus.Accommodated:
-            return 'zakwaterowanie'
-        elif self.accomodationStatus == AccomodationStatus.Ended:
-            return 'zakończona'
-
     def __str__(self):
-        return f'#{self.key} pokój #{self.roomKey}, {self.start}-{self.end}, status {self.getAccomodationStatus()}, dane gościa: {self.name} {self.surname}, PESEL: {self.pesel}, tel.: {self.phone}'
+        return f'#{self.key} pokój #{self.roomKey}, {self.start}-{self.end}, status {self.accomodationStatus.description}, dane gościa: {self.name} {self.surname}, PESEL: {self.pesel}, tel.: {self.phone}'
 
     def cancelReservation(self):
         self.accomodationStatus = AccomodationStatus.Canceled
@@ -78,12 +68,7 @@ class Reservation():
 
     # Sprawdzenie statusu płatności podanej rezerwacji (opłacona,odroczona,niepołacona)
     def checkPaymentStatus(self):
-        if self.paymentStatus == PaymentStatus.Paid:
-            print('\tRezerwacja opłacona')
-        if self.paymentStatus == PaymentStatus.Deferred:
-            print('\tPłatność odrocznona')
-        if self.paymentStatus == PaymentStatus.Unpaid:
-            print('\tRezerwacja nieopłacona')
+        print(f'\t{self.paymentStatus.description}')
 
     # Realizacja płatności i zmiana statusu
     def markPaid(self, params):
@@ -91,19 +76,13 @@ class Reservation():
             print('\tRezerwacja nieaktualna')
             return
         if self.paymentStatus == PaymentStatus.Paid:
-            print('\tRezerwacja opłacona')
+            print(f'\t{self.paymentStatus.description}')
             return
 
         # Zapisanie metody płatności
-        method = params[1]
-        if method == 'gotówka':
-            self.paymentMethod = PaymentMethod.Cash
-        if method == 'karta':
-            self.paymentMethod = PaymentMethod.Card
-        if method == 'telefon':
-            self.paymentMethod = PaymentMethod.Phone
-        if method == 'BLIK':
-            self.paymentMethod = PaymentMethod.Blik
+        for method in PaymentMethod:
+            if method.match(params[1]):
+                self.paymentMethod = method
 
         # Obliczanie ceny pobytu
         room = storage.rooms.get(self.roomKey)
@@ -112,20 +91,22 @@ class Reservation():
 
         print(f'\tKoszt pobytu wynosi: {prize:.2f} zł')
 
+        paymentConfirmation = f'\tZapłacono. Użyta metoda płatności: {self.paymentMethod.description}'
+
         # Możliwość odroczenia płatności, przy pobycie dłuższym niż 5 dni
         if number > 5:
             print('\tPobyt wynosi więcej niż 5 dni\nPłatność może zostać zrealizowana podczas wymeldowania.')
             answer = ''
-            while answer != 'TAK' and answer != 'NIE':
+            while not answer in ['TAK', 'NIE']:
                 answer = input('\tCzy chcesz odroczyć płatność? [TAK, NIE]: ')
                 if answer == 'TAK':
                     self.paymentStatus = PaymentStatus.Deferred
-                    print('\tPłatność odroczona')
+                    print(f'\t{self.paymentStatus.description}')
                 elif answer == 'NIE':
                     self.paymentStatus = PaymentStatus.Paid
-                    print(f'\tZapłacono. Użyta metoda płatności: {method}')
+                    print(paymentConfirmation)
                 else:
                     print('\tBłędnie wprowadzona odpowiedź. Podaj [TAK, NIE]')
         else:
             self.paymentStatus = PaymentStatus.Paid
-            print(f'\tZapłacono. Użyta metoda płatności: {method}')
+            print(paymentConfirmation)
