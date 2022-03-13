@@ -28,7 +28,7 @@ class Store():
         element = self.prepareObject(key, params)
         if element:
             self.elements[key] = element
-            print('\tOperacja wkonana poprawnie')
+            print('\tOperacja wkonana poprawnie\n\tID: ', key)
             return key
 
     def modify(self, params):
